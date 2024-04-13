@@ -16,7 +16,6 @@ def filter_usernames():
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM user")
     result = cursor.fetchall()
-    print("first row", result[0])
     print("Total users found: ", len(result))
     for row in result:
         if not filter_username(row[12]):
