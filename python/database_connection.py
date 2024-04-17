@@ -1,13 +1,17 @@
+import os
 import mysql.connector
 from python.filter_username import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def connect():
     print("Connecting to database")
     return mysql.connector.connect(
-        host="localhost",
-        user="vetlogUser",
-        password="vetlogDB",
-        database="vetlog")
+        host=os.getenv('HOST'),
+        user=os.getenv('USER'),
+        password=os.getenv('PASSWORD'),
+        database=os.getenv('DATABASE'))
 
 def filter_usernames():
     count = 0
