@@ -4,8 +4,8 @@ on:
     branches: [ "main", "feature/3" ]
 env:
   DB_DATABASE: vetlog
-  DB_USER: root
-  DB_PASSWORD: root  
+  DB_USER: ${{ secrets.USERNAME }}
+  DB_PASSWORD: ${{ secrets.PASSWORD }}  
 jobs:
   build:
     runs-on: ubuntu-latest
