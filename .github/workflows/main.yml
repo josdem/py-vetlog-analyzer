@@ -18,7 +18,8 @@ jobs:
         python-version: '3.11.9'
     - name: Install dependencies    
       run: |  
-        pip install python-dotenv    
+        pip install python-dotenv
+        pip install mysql-connector-python
     - name: Start MySQL
       run: |
         sudo /etc/init.d/mysql start
