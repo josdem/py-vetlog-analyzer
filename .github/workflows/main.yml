@@ -1,7 +1,7 @@
 name: Setting up environment
 on:
   push:
-    branches: [ "main", "feature/3" ]
+    branches: [ "main" ]
 env:
   HOST: localhost
   DATABASE: vetlog
