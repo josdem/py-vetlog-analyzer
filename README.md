@@ -10,5 +10,11 @@ Data analysis for [Vetlog](https://vetlog.org/) database
 #### To run tests
 
 ```bash
-python -m unittest discover -p test*.py
+python -m unittest discover -s tests
+```
+
+or
+
+```bash
+python3 -m unittest discover -s tests
 ```
