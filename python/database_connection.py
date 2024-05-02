@@ -5,13 +5,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def connect():
     print("Connecting to database")
     return mysql.connector.connect(
-        host=os.getenv('HOST'),
-        user=os.getenv('USER'),
-        password=os.getenv('PASSWORD'),
-        database=os.getenv('DATABASE'))
+        host=os.getenv("HOST"),
+        user=os.getenv("USER"),
+        password=os.getenv("PASSWORD"),
+        database=os.getenv("DATABASE"),
+    )
+
 
 def filter_usernames():
     count = 0
@@ -24,7 +27,18 @@ def filter_usernames():
     for row in result:
         if not filter_username(row[12]):
             count += 1
-            print("No valid username: id", row[0], "username:", row[12], "first_name: ", row[7], "last_name: ", row[8], "email:", row[5])
+            print(
+                "No valid username: id",
+                row[0],
+                "username:",
+                row[12],
+                "first_name: ",
+                row[7],
+                "last_name: ",
+                row[8],
+                "email:",
+                row[5],
+            )
     print("Invalid users found: ", count)
     connection.close()
     return count
