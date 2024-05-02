@@ -18,8 +18,8 @@ jobs:
           python-version: "3.11.9"
       - name: Install dependencies
         run: |
-          pip install python-dotenv
-          pip install mysql-connector-python
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
       - name: Format with Black
         uses: psf/black@stable
         with:
