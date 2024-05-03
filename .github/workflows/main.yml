@@ -55,3 +55,8 @@ jobs:
           mysql -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');" -u$USER -p$PASSWORD -D$DATABASE
       - name: Execute tests
         run: python -m unittest discover ${{ github.workspace }} -s tests
+      - name: Run tests with coverage
+        run: |
+          coverage run -m unittest discover
+          coverage report -m
+          coverage html
