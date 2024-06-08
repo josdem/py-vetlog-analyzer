@@ -1,12 +1,12 @@
 import unittest
 
 from python.database_filter import *
-from python.filter_username import *
+from python.database_connector import *
 
 
 class FixedTest(unittest.TestCase):
     def test_connect(self):
-        self.assertIsNotNone(connect())
+        self.assertIsNotNone(Connector().get_connector())
         self.assertTrue(filter_usernames() >= 0)
 
 

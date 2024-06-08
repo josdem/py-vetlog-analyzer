@@ -1,5 +1,5 @@
 from python.filter_username import *
-from python.database_connector import connect
+from python.database_connector import *
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,7 +7,7 @@ load_dotenv()
 def filter_usernames():
     count = 0
     print("Finding usernames")
-    connection = connect()
+    connection = Connector().get_connector()
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM user")
     result = cursor.fetchall()
