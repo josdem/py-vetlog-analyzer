@@ -7,6 +7,12 @@ Data analysis for [Vetlog](https://vetlog.org/) database
 
 - Python version `3.11.9` or above
 
+#### To format code
+
+```bash
+python -m black "python" "tests"
+```
+
 #### To run tests
 
 ```bash
