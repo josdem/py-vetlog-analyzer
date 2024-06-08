@@ -1,8 +1,5 @@
 from python.filter_username import *
 from python.database_connector import *
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class Filter:
     def __init__(self):
