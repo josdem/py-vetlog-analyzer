@@ -1,6 +1,7 @@
 from python.filter_username import *
 from python.database_connector import *
 
+
 class Filter:
     def __init__(self):
         self.connection = Connector().get_connector()

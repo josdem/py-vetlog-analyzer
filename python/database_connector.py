@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class Connector:
     def __init__(self):
         self.connection = mysql.connector.connect(
