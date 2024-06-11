@@ -1,5 +1,5 @@
 **__pycache__
-
-# Coverage reports
+poetry.lock
 .coverage
 htmlcov/
+dist/
