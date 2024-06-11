@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "py-vetlog-analyzer"
+version = "1.0.0"
+description = "MySQL database analyzer for Vetlog"
+authors = ["Jose Morales <contact@josdem.io>"]
+license = "Apache 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-dotenv = "^1.0.1"
+mysql-connector-python = "^8.4.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+coverage = "^7.5.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
