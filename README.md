@@ -24,3 +24,10 @@ or
 ```bash
 python3 -m unittest discover -s tests
 ```
+
+#### To run coverage
+```bash
+coverage run -m unittest discover
+coverage report -m
+coverage html
+```

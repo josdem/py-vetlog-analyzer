@@ -1,7 +1,7 @@
 name: Setting up environment
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 env:
@@ -60,3 +60,9 @@ jobs:
           coverage run -m unittest discover
           coverage report -m
           coverage html
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: htmlcov
+          retention-days: 30
