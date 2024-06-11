@@ -7,6 +7,11 @@ Data analysis for [Vetlog](https://vetlog.org/) database
 
 - Python version `3.11.9` or above
 
+#### To install dependencies
+```bash
+poetry install
+```
+
 #### To format code
 
 ```bash
