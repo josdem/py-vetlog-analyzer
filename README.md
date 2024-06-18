@@ -30,6 +30,11 @@ or
 python3 -m unittest discover -s tests
 ```
 
+#### To run with poetry
+```bash
+poetry run filter
+```
+
 #### To run coverage
 ```bash
 coverage run -m unittest discover
