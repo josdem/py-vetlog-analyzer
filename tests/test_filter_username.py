@@ -1,5 +1,5 @@
 import unittest
-from python.filter_username import *
+from py_vetlog_analyzer.filter_username import *
 
 
 class FixedTest(unittest.TestCase):

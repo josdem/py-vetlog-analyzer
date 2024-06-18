@@ -1,7 +1,7 @@
 import unittest
 
-from python.database_filter import *
-from python.database_connector import *
+from py_vetlog_analyzer.database_filter import *
+from py_vetlog_analyzer.database_connector import *
 
 
 class FixedTest(unittest.TestCase):
