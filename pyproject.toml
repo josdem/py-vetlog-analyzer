@@ -7,11 +7,6 @@ license = "Apache 2.0"
 readme = "README.md"
 packages = [{include = "py_vetlog_analyzer"}]
 
-[[tool.poetry.source]]
-name = "vetlog"
-priority = "primary"
-url = "https://github.com/josdem/py-vetlog-analyzer"
-
 [tool.poetry.dependencies]
 python = "^3.11"
 python-dotenv = "^1.0.1"
