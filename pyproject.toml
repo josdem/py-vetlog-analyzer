@@ -6,6 +6,7 @@ authors = ["Jose Morales <contact@josdem.io>"]
 license = "Apache 2.0"
 readme = "README.md"
 packages = [{include = "py_vetlog_analyzer"}]
+repository = "https://github.com/josdem/py-vetlog-analyzer"
 
 [tool.poetry.dependencies]
 python = "^3.11"
