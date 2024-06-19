@@ -7,8 +7,8 @@ on:
 env:
   HOST: localhost
   DATABASE: vetlog
-  USER: ${{ secrets.USERNAME }}
-  PASSWORD: ${{ secrets.PASSWORD }}
+  USER: ${{ secrets.DB_USER }}
+  PASSWORD: ${{ secrets.DB_PASSWORD }}
 jobs:
   build:
     runs-on: ubuntu-latest
