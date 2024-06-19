@@ -42,6 +42,10 @@ coverage report -m
 coverage html
 ```
 
+#### Configuration
+
+* https://github.com/josdem/py-vetlog-analyzer/wiki
+
 **PyPi project:**
 
 https://pypi.org/project/py-vetlog-analyzer/
