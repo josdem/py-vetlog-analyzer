@@ -15,7 +15,7 @@ poetry install
 #### To format code
 
 ```bash
-python -m black "python" "tests"
+python -m black "py_vetlog_analyzer" "tests"
 ```
 
 #### To run tests
@@ -28,6 +28,11 @@ or
 
 ```bash
 python3 -m unittest discover -s tests
+```
+
+#### To run with poetry
+```bash
+poetry run filter
 ```
 
 #### To run coverage

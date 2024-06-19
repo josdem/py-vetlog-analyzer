@@ -1,4 +1,4 @@
-from python.database_filter import *
+from py_vetlog_analyzer.database_filter import *
 from unittest.mock import MagicMock
 import unittest
 

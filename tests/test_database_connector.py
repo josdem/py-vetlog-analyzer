@@ -1,5 +1,5 @@
 from unittest.mock import MagicMock
-from python.database_connector import *
+from py_vetlog_analyzer.database_connector import *
 import unittest
 
 

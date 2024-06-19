@@ -5,7 +5,7 @@ description = "MySQL database analyzer for Vetlog"
 authors = ["Jose Morales <contact@josdem.io>"]
 license = "Apache 2.0"
 readme = "README.md"
-package-mode = false
+packages = [{include = "py_vetlog_analyzer"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -13,6 +13,9 @@ python-dotenv = "^1.0.1"
 mysql-connector-python = "^8.4.0"
 black = "^24.4.2"
 coverage = "^7.5.3"
+
+[tool.poetry.scripts]
+filter = "py_vetlog_analyzer.main:find"
 
 [build-system]
 requires = ["poetry-core"]

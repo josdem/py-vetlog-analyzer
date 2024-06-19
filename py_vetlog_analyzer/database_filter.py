@@ -1,5 +1,5 @@
-from python.filter_username import *
-from python.database_connector import *
+from py_vetlog_analyzer.filter_username import *
+from py_vetlog_analyzer.database_connector import *
 
 
 class Filter:

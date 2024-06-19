@@ -29,7 +29,7 @@ jobs:
       - name: Format with Black
         uses: psf/black@stable
         with:
-          src: "python/ tests/"
+          src: "py_vetlog_analyzer/ tests/"
           options: "--check --verbose"
       - name: Start MySQL
         run: |
