@@ -9,6 +9,8 @@ env:
   DATABASE: vetlog
   USER: ${{ secrets.USERNAME }}
   PASSWORD: ${{ secrets.PASSWORD }}
+  VETLOG_USER: ${{ secrets.VETLOG_USER }}
+  VETLOG_PASSWORD: ${{ secrets.VETLOG_PASSWORD }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,6 +54,10 @@ jobs:
             username varchar(255) NOT NULL,
             PRIMARY KEY (id)
           );" -u$USER -p$PASSWORD -D$DATABASE
+          echo "Creating vetlog user"
+          mysql -e "CREATE USER '$VETLOG_USER'@'localhost' IDENTIFIED BY '$VETLOG_PASSWORD';" -u$USER -p$PASSWORD
+          echo "Giving permissions"
+          mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$VETLOG_USER'@'localhost';" -u$USER -p$PASSWORD
           echo "Creating users"
           mysql -e "INSERT INTO user VALUES(1, 0, 0, 0,'2024-04-21 20:08:51','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','josdem');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');" -u$USER -p$PASSWORD -D$DATABASE
