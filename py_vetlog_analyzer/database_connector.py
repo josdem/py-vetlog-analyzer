@@ -9,8 +9,8 @@ class Connector:
     def __init__(self):
         self.connection = mysql.connector.connect(
             host=os.getenv("HOST"),
-            user=os.getenv("USER"),
-            password=os.getenv("PASSWORD"),
+            user=os.getenv("VETLOG_USER"),
+            password=os.getenv("VETLOG_PASSWORD"),
             database=os.getenv("DATABASE"),
         )
 
