@@ -33,6 +33,7 @@ python3 -m unittest discover -s tests
 #### To run with poetry
 ```bash
 poetry run filter
+poetry run suspicious
 ```
 
 #### To run coverage

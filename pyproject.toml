@@ -16,6 +16,7 @@ coverage = "^7.5.3"
 
 [tool.poetry.scripts]
 filter = "py_vetlog_analyzer.main:find"
+suspicious = "py_vetlog_analyzer.main:suggest"
 
 [build-system]
 requires = ["poetry-core"]
