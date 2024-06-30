@@ -1,17 +1,22 @@
-import mox
 import os
-
-class TestOs(mox.MoxTestBase):
-    def test_getcwd(self):
-        self.mox.StubOutWithMock(os, 'getcwd')
-
-        os.getcwd().AndReturn('/mox/path')
-
-        self.mox.replay_all()
-        assert os.getcwd() == '/mox/path'
-        self.mox.verify_all()
+import mox
+import mysql.connector
+from py_vetlog_analyzer.database_connector import *
 
 
-if __name__ == '__main__':
-    import unittest
-    unittest.main()
+class FixedTest(mox.MoxTestBase):
+    def test_mox_database_connector(self):
+        connection = self.mox.CreateMockAnything()
+        self.mox.StubOutWithMock(mysql.connector, "connect")
+
+        mysql.connector.connect(
+            host=os.getenv("HOST"),
+            user=os.getenv("VETLOG_USER"),
+            password=os.getenv("VETLOG_PASSWORD"),
+            database=os.getenv("DATABASE"),
+        ).AndReturn(connection)
+
+        self.mox.ReplayAll()
+        connector = Connector()
+
+        assert connector.get_connector() == connection
