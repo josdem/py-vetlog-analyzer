@@ -3,3 +3,4 @@ poetry.lock
 .coverage
 htmlcov/
 dist/
+env/
