@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "jgafnea",
+      "name": "jgafnea",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84107636?v=4",
+      "profile": "https://github.com/jgafnea",
+      "contributions": [
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "py-vetlog-analyzer",
+  "projectOwner": "josdem"
+}
