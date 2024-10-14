@@ -5,7 +5,7 @@ Data analysis for [Vetlog](https://vetlog.org/) database
 
 #### Requirements
 
-- Python version `3.11.9` or above
+- Python version `3.12.3` or above
 
 #### To install dependencies
 ```bash
