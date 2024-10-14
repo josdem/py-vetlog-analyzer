@@ -15,6 +15,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "kaminuma",
+      "name": "T.H(kaminuma)",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33448874?v=4",
+      "profile": "https://github.com/kaminuma",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
