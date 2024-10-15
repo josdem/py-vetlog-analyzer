@@ -1,8 +1,11 @@
 Python Vetlog Analyzer
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-----------------------------
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josdem_py-vetlog-analyzer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josdem_py-vetlog-analyzer)
+
+## <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Data analysis for [Vetlog](https://vetlog.org/) database
 
@@ -11,6 +14,7 @@ Data analysis for [Vetlog](https://vetlog.org/) database
 - Python version `3.12.3` or above
 
 #### To install dependencies
+
 ```bash
 poetry install
 ```
@@ -34,12 +38,14 @@ python3 -m unittest discover -s tests
 ```
 
 #### To run with poetry
+
 ```bash
 poetry run filter
 poetry run suspicious
 ```
 
 #### To run coverage
+
 ```bash
 coverage run -m unittest discover
 coverage report -m
@@ -47,10 +53,13 @@ coverage html
 ```
 
 #### Configuration
+
 https://github.com/josdem/py-vetlog-analyzer/wiki
 
 #### PyPi project
+
 https://pypi.org/project/py-vetlog-analyzer/
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
