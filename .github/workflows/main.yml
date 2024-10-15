@@ -1,9 +1,9 @@
 name: Setting up environment
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 env:
   HOST: localhost
   DATABASE: vetlog
@@ -79,3 +79,8 @@ jobs:
           name: code-coverage-report
           path: htmlcov
           retention-days: 30
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
