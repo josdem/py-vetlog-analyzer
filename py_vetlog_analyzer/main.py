@@ -1,4 +1,4 @@
-from py_vetlog_analyzer.database_filter import *
+from py_vetlog_analyzer.database_filter import Filter
 
 
 def find():
