@@ -5,10 +5,10 @@ import unittest
 
 class FixedTest(unittest.TestCase):
     def test_mock_filter(self):
-        filter = Filter()
-        filter.connection = MagicMock()
-        filter.cursor = MagicMock()
-        filter.filter_usernames()
-        filter.cursor.execute.assert_called_with("SELECT * FROM user")
-        filter.cursor.fetchall.assert_called_once()
-        filter.connection.close.assert_called_once()
+        db_filter = Filter()
+        db_filter.connection = MagicMock()
+        db_filter.cursor = MagicMock()
+        db_filter.filter_usernames()
+        db_filter.cursor.execute.assert_called_with("SELECT * FROM user")
+        db_filter.cursor.fetchall.assert_called_once()
+        db_filter.connection.close.assert_called_once()
