@@ -1,6 +1,6 @@
-from py_vetlog_analyzer.filter_username import *
-from py_vetlog_analyzer.suspicious_username import *
-from py_vetlog_analyzer.database_connector import *
+from py_vetlog_analyzer.filter_username import filter_username
+from py_vetlog_analyzer.suspicious_username import is_suspicious_username
+from py_vetlog_analyzer.database_connector import Connector
 
 
 class Filter:
