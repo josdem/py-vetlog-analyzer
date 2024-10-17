@@ -61,7 +61,7 @@ jobs:
             name varchar(255) NOT NULL,
             type varchar(255) NOT NULL,
             PRIMARY KEY (id)
-          );" -u$USER -p$PASSWORD -D$DATABASE"
+          );" -u$USER -p$PASSWORD -D$DATABASE
           echo "Creating pet table"
           mysql -e "CREATE TABLE pet(
             id bigint NOT NULL AUTO_INCREMENT,
