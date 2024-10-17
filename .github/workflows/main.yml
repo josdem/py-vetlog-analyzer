@@ -60,7 +60,7 @@ jobs:
             date_created datetime(6) NOT NULL,
             name varchar(255) NOT NULL,
             type varchar(255) NOT NULL,
-            PRIMARY KEY (`id`)
+            PRIMARY KEY (id)
           );" -u$USER -p$PASSWORD -D$DATABASE"
           echo "Creating pet table"
           mysql -e "CREATE TABLE pet(
@@ -77,7 +77,7 @@ jobs:
             breed_id bigint DEFAULT NULL,
             user_id bigint DEFAULT NULL,
             pet_id bigint DEFAULT NULL,
-            PRIMARY KEY (`id`),
+            PRIMARY KEY (id),
             KEY `FKj3j9664ee510hnt2pkd7on7dl` (`adopter_id`),
             KEY `FKiqbjbaml7gtwulqptktmsi5dc` (`breed_id`),
             KEY `FK9hxka0oqkd15dmqstdarori08` (`user_id`),
