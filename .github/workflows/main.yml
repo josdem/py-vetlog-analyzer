@@ -54,15 +54,52 @@ jobs:
             username varchar(255) NOT NULL,
             PRIMARY KEY (id)
           );" -u$USER -p$PASSWORD -D$DATABASE
+          echo "Creating breed table"
+          CREATE TABLE breed(
+            id bigint NOT NULL AUTO_INCREMENT,
+            date_created datetime(6) NOT NULL,
+            name varchar(255) NOT NULL,
+            type varchar(255) NOT NULL,
+            PRIMARY KEY (`id`)
+          );" -u$USER -p$PASSWORD -D$DATABASE"
+          echo "Creating pet table"
+          CREATE TABLE pet(
+            id bigint NOT NULL AUTO_INCREMENT,
+            birth_date datetime(6) NOT NULL,
+            date_created datetime(6) NOT NULL,
+            dewormed bit(1) NOT NULL,
+            name varchar(255) NOT NULL,
+            status varchar(255) NOT NULL,
+            sterilized bit(1) NOT NULL,
+            uuid varchar(255) NOT NULL,
+            vaccinated bit(1) NOT NULL,
+            adopter_id bigint DEFAULT NULL,
+            breed_id bigint DEFAULT NULL,
+            user_id bigint DEFAULT NULL,
+            pet_id bigint DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            KEY `FKj3j9664ee510hnt2pkd7on7dl` (`adopter_id`),
+            KEY `FKiqbjbaml7gtwulqptktmsi5dc` (`breed_id`),
+            KEY `FK9hxka0oqkd15dmqstdarori08` (`user_id`),
+            KEY `FKotefldy9u8iuej3t2nq4sa6tq` (`pet_id`),
+            CONSTRAINT `FK9hxka0oqkd15dmqstdarori08` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+            CONSTRAINT `FKiqbjbaml7gtwulqptktmsi5dc` FOREIGN KEY (`breed_id`) REFERENCES `breed` (`id`),
+            CONSTRAINT `FKj3j9664ee510hnt2pkd7on7dl` FOREIGN KEY (`adopter_id`) REFERENCES `user` (`id`),
+            CONSTRAINT `FKotefldy9u8iuej3t2nq4sa6tq` FOREIGN KEY (`pet_id`) REFERENCES `pet_adoption` (`id`),
+            CONSTRAINT `pet_id_constraint` FOREIGN KEY (`pet_id`) REFERENCES `pet_adoption` (`id`)
+          );" -u$USER -p$PASSWORD -D$DATABASE
           echo "Creating vetlog user"
           mysql -e "CREATE USER '$VETLOG_USER'@'localhost' IDENTIFIED BY '$VETLOG_PASSWORD';" -u$USER -p$PASSWORD
           echo "Giving permissions"
           mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$VETLOG_USER'@'localhost';" -u$USER -p$PASSWORD
-          echo "Creating users"
+          echo "Creating rows"
           mysql -e "INSERT INTO user VALUES(1, 0, 0, 0,'2024-04-21 20:08:51','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','josdem');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(3, 0, 0, 0,'2024-04-21 20:08:53','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','NHUQfuLarRMDj');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');" -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG')" -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',_binary '^A','Cremita','OWNED',_binary '^A','0694c042-a4ae-4f99-b329-98f519da0164',_binary '^A',NULL,1,1,NULL)," -u$USER -p$PASSWORD -D$DATABASE
+
       - name: Execute tests
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
