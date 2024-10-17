@@ -55,7 +55,7 @@ jobs:
             PRIMARY KEY (id)
           );" -u$USER -p$PASSWORD -D$DATABASE
           echo "Creating breed table"
-          CREATE TABLE breed(
+          mysql -e "CREATE TABLE breed(
             id bigint NOT NULL AUTO_INCREMENT,
             date_created datetime(6) NOT NULL,
             name varchar(255) NOT NULL,
@@ -63,7 +63,7 @@ jobs:
             PRIMARY KEY (`id`)
           );" -u$USER -p$PASSWORD -D$DATABASE"
           echo "Creating pet table"
-          CREATE TABLE pet(
+          mysql -e "CREATE TABLE pet(
             id bigint NOT NULL AUTO_INCREMENT,
             birth_date datetime(6) NOT NULL,
             date_created datetime(6) NOT NULL,
