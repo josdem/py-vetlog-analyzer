@@ -3,9 +3,6 @@ from datetime import datetime
 
 
 class VaccinesGenerator:
-    def __init__(self):
-        self.connection = Connector().get_connector()
-        self.cursor = self.connection.cursor()
 
     def generateVaccines(pet):
         pet = pet
@@ -16,8 +13,16 @@ class VaccinesGenerator:
         print("weeks", int(weeks))
 
         def registerVaccination(name):
-            print("Registering vaccination", name)
+            connection = Connector().get_connector()
+            cursor = connection.cursor()
+
             print("id", pet[0], "name:", pet[1], "birthdate:", pet[2], "type:", pet[3])
+
+            cursor.execute(
+                "INSERT INTO vaccination (pet_id, name, date, status) VALUES (%s, %s, %s, 'PENDING')",
+                (pet[0], name, datetime.now()),
+            )
+            connection.commit()
 
         match int(weeks):
             case weeks if weeks in range(6, 9):
