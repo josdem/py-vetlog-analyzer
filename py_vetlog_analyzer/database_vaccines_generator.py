@@ -7,5 +7,5 @@ class VaccinesGenerator:
         self.cursor = self.connection.cursor()
 
     def generateVaccines(pet):
-        print("id", pet[0], "name:", pet[1], "birthdate:", pet[2])
+        print("id", pet[0], "name:", pet[1], "birthdate:", pet[2], "type:", pet[3])
         return pet

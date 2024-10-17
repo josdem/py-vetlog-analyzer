@@ -9,11 +9,13 @@ class PetFilter:
 
     def filtering_pets(self):
         self.cursor.execute(
-            "select pet.id, pet.name, pet.birth_date from pet, vaccination where vaccination.pet_id = pet.id and vaccination.status='PENDING' group by pet.id"
+            "select pet.id, pet.name, pet.birth_date, breed.type from pet, vaccination, breed where breed.id = pet.breed_id and vaccination.pet_id = pet.id and vaccination.status='PENDING' group by pet.id;"
         )
         pets_vaccinated = self.cursor.fetchall()
         print("Vaccinated pets found: ", len(pets_vaccinated))
-        self.cursor.execute("select pet.id, pet.name, pet.birth_date from pet")
+        self.cursor.execute(
+            "select pet.id, pet.name, pet.birth_date, breed.type from pet, breed where breed.id = pet.breed_id;"
+        )
         pets = self.cursor.fetchall()
         print("Finding pets need vaccines")
         pets_waiting_for_vaccines = [n for n in pets if n not in pets_vaccinated]
