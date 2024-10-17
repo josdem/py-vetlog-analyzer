@@ -88,8 +88,8 @@ jobs:
           mysql -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(3, 0, 0, 0,'2024-04-21 20:08:53','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','NHUQfuLarRMDj');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG')" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',_binary '^A','Cremita','OWNED',_binary '^A','0694c042-a4ae-4f99-b329-98f519da0164',_binary '^A',NULL,1,1,NULL)," -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG');" -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',_binary '^A','Cremita','OWNED',_binary '^A','0694c042-a4ae-4f99-b329-98f519da0164',_binary '^A',NULL,1,1,NULL);" -u$USER -p$PASSWORD -D$DATABASE
 
       - name: Execute tests
         run: |
