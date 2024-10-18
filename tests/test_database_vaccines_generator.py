@@ -13,6 +13,10 @@ class FixedTest(unittest.TestCase):
         pet = ["1", "Cremita", datetime.datetime(2024, 8, 3), "DOG"]
         self.assertEqual(VaccinesGenerator().generate_vaccines(pet), 3)
 
+    def test_generate_third_vaccination_records(self):
+        pet = ["1", "Cremita", datetime.datetime(2024, 7, 3), "DOG"]
+        self.assertEqual(VaccinesGenerator().generate_vaccines(pet), 4)
+
 
 if __name__ == "__main__":
     unittest.main()
