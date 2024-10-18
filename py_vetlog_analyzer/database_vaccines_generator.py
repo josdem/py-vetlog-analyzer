@@ -4,15 +4,15 @@ from datetime import datetime
 
 class VaccinesGenerator:
 
-    def generate_vaccines(self):
-        pet = self
+    def generate_vaccines(pet):
+        
         if pet[3] != "DOG":
             return pet
         now = datetime.now()
         weeks = (now - pet[2]).days / 7
         print("weeks", int(weeks))
 
-        def registerVaccination(name):
+        def register_vaccination(name):
             connection = Connector().get_connector()
             cursor = connection.cursor()
 
@@ -26,20 +26,20 @@ class VaccinesGenerator:
 
         match int(weeks):
             case weeks if weeks in range(6, 9):
-                registerVaccination("DA2PP")
-                registerVaccination("Deworming")
+                register_vaccination("DA2PP")
+                register_vaccination("Deworming")
             case weeks if weeks in range(10, 13):
-                registerVaccination("DA2PP")
-                registerVaccination("Deworming")
-                registerVaccination("Leptospirosis")
+                register_vaccination("DA2PP")
+                register_vaccination("Deworming")
+                register_vaccination("Leptospirosis")
             case weeks if weeks in range(14, 16):
-                registerVaccination("DA2PP")
-                registerVaccination("Deworming")
-                registerVaccination("Leptospirosis")
-                registerVaccination("Rabies")
+                register_vaccination("DA2PP")
+                register_vaccination("Deworming")
+                register_vaccination("Leptospirosis")
+                register_vaccination("Rabies")
             case weeks if weeks >= 17:
-                registerVaccination("DA2PP")
-                registerVaccination("Deworming")
-                registerVaccination("Leptospirosis")
-                registerVaccination("Rabies")
-                registerVaccination("Canine Influenza")
+                register_vaccination("DA2PP")
+                register_vaccination("Deworming")
+                register_vaccination("Leptospirosis")
+                register_vaccination("Rabies")
+                register_vaccination("Canine Influenza")
