@@ -5,7 +5,7 @@ from datetime import datetime
 class VaccinesGenerator:
 
     def generate_vaccines(pet):
-        
+
         if pet[3] != "DOG":
             return pet
         now = datetime.now()
