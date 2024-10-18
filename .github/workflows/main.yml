@@ -1,7 +1,7 @@
 name: Setting up environment
 on:
   push:
-    branches: ["main", "feature/29"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 env:
