@@ -20,7 +20,7 @@ class PetFilter:
         pets_waiting_for_vaccines = [n for n in pets if n not in pets_vaccinated]
 
         for row in pets_waiting_for_vaccines:
-            VaccinesGenerator.generateVaccines(row)
+            VaccinesGenerator.generate_vaccines(row)
 
         print("Pets waiting for vaccines found: ", len(pets_waiting_for_vaccines))
         self.connection.close()

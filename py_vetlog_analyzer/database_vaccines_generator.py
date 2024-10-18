@@ -4,8 +4,8 @@ from datetime import datetime
 
 class VaccinesGenerator:
 
-    def generateVaccines(pet):
-        pet = pet
+    def generate_vaccines(self):
+        pet = self
         if pet[3] != "DOG":
             return pet
         now = datetime.now()
