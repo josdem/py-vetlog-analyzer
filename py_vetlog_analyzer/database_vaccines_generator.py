@@ -4,8 +4,8 @@ from datetime import datetime
 
 class VaccinesGenerator:
 
-    def generate_vaccines(pet):
-
+    def generate_vaccines(self, pet):
+        count = 0
         if pet[3] != "DOG":
             return pet
         now = datetime.now()
@@ -28,18 +28,23 @@ class VaccinesGenerator:
             case weeks if weeks in range(6, 9):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
+                count = 2
             case weeks if weeks in range(10, 13):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
+                count = 3
             case weeks if weeks in range(14, 16):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
+                count = 4
             case weeks if weeks >= 17:
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
                 register_vaccination("Canine Influenza")
+                count = 5
+        return count
