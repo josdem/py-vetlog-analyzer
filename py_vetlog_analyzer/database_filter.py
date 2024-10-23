@@ -19,17 +19,13 @@ class Filter:
         for row in result:
             if not filter_username(row[12]):
                 count += 1
-                print(
-                    "No valid username: id",
-                    row[0],
-                    "username:",
-                    row[12],
-                    "first_name: ",
-                    row[7],
-                    "last_name: ",
-                    row[8],
-                    "email:",
-                    row[5],
+                self.logger.info(
+                    "No valid user: id"
+                    + row[0]
+                    + "username:"
+                    + row[12]
+                    + "email:"
+                    + row[5]
                 )
         self.logger.info("Invalid users found: %d", count)
         self.connection.close()
@@ -44,17 +40,13 @@ class Filter:
         for row in result:
             if is_suspicious_username(row[12]):
                 count += 1
-                print(
-                    "Suspicious username: id",
-                    row[0],
-                    "username:",
-                    row[12],
-                    "first_name: ",
-                    row[7],
-                    "last_name: ",
-                    row[8],
-                    "email:",
-                    row[5],
+                self.logger.info(
+                    "Suspicious user: id"
+                    + row[0]
+                    + "username:"
+                    + row[12]
+                    + "email:"
+                    + row[5]
                 )
         self.logger.info("Suspicious users found: %d", count)
         self.connection.close()

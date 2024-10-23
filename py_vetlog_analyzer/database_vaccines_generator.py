@@ -15,7 +15,7 @@ class VaccinesGenerator:
         self.logger.info("Registering vaccination for pet: %s", pet[1])
         now = datetime.now()
         weeks = (now - pet[2]).days / 7
-        self.logger.info("weeks: %d", int(weeks))
+        self.logger.info("Pet is %d weeks old", int(weeks))
 
         def register_vaccination(name):
             connection = Connector().get_connector()
