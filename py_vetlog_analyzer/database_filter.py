@@ -15,7 +15,7 @@ class Filter:
         self.logger.info("Finding usernames")
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
-        print("Total users found: ", len(result))
+        self.logger.info("Total users found: %d", len(result))
         for row in result:
             if not filter_username(row[12]):
                 count += 1
@@ -31,16 +31,16 @@ class Filter:
                     "email:",
                     row[5],
                 )
-        print("Invalid users found: ", count)
+        self.logger.info("Invalid users found: %d", count)
         self.connection.close()
         return count
 
     def suspicious_usernames(self):
         count = 0
-        print("Finding usernames")
+        self.logger.info("Finding usernames")
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
-        print("Total users found: ", len(result))
+        self.logger.info("Total users found: %d", len(result))
         for row in result:
             if is_suspicious_username(row[12]):
                 count += 1
@@ -56,6 +56,6 @@ class Filter:
                     "email:",
                     row[5],
                 )
-        print("Suspicious users found: ", count)
+        self.logger.info("Suspicious users found: %d", count)
         self.connection.close()
         return count
