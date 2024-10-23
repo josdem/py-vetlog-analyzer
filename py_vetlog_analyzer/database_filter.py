@@ -12,7 +12,7 @@ class Filter:
 
     def filter_usernames(self):
         count = 0
-        self.logger.info("Finding usernames %s", "")
+        self.logger.info("Finding usernames")
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
         print("Total users found: ", len(result))

@@ -12,5 +12,5 @@ class Logger:
         self.console_handler.setFormatter(self.formatter)
         self.logger.addHandler(self.console_handler)
 
-    def info(self, message, args):
-        self.logger.info(message, args)
+    def info(self, message, args=None):
+        self.logger.info(message) if args == None else self.logger.info(message, args)
