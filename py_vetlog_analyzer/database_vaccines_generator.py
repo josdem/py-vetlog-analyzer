@@ -25,16 +25,16 @@ class VaccinesGenerator:
             connection.commit()
 
         match int(weeks):
-            case weeks if weeks in range(6, 9):
+            case weeks if weeks in range(6, 10):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 count = 2
-            case weeks if weeks in range(10, 13):
+            case weeks if weeks in range(10, 14):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
                 count = 3
-            case weeks if weeks in range(14, 16):
+            case weeks if weeks in range(14, 17):
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
