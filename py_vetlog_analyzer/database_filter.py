@@ -1,16 +1,18 @@
 from py_vetlog_analyzer.filter_username import filter_username
 from py_vetlog_analyzer.suspicious_username import is_suspicious_username
 from py_vetlog_analyzer.database_connector import Connector
+from py_vetlog_analyzer.logger import Logger
 
 
 class Filter:
     def __init__(self):
         self.connection = Connector().get_connector()
         self.cursor = self.connection.cursor()
+        self.logger = Logger("Filter")
 
     def filter_usernames(self):
         count = 0
-        print("Finding usernames")
+        self.logger.info("Finding usernames %s", "")
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
         print("Total users found: ", len(result))
