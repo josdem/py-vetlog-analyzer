@@ -10,6 +10,10 @@ PET_NAME: Final[str] = "Cremita"
 
 
 class FixedTest(unittest.TestCase):
+    def test_generate_no_vaccination_records(self):
+        pet = [PET_ID, PET_NAME, datetime.now(), PET_TYPE]
+        self.assertEqual(VaccinesGenerator().generate_vaccines(pet), 0)
+
     def test_generate_first_vaccination_records(self):
         pet = [PET_ID, PET_NAME, datetime.datetime(2024, 8, 23), PET_TYPE]
         self.assertEqual(VaccinesGenerator().generate_vaccines(pet), 2)
