@@ -20,11 +20,11 @@ class Filter:
             if not filter_username(row[12]):
                 count += 1
                 self.logger.info(
-                    "No valid user: id"
-                    + row[0]
-                    + "username:"
+                    "No valid user found: id:"
+                    + str(row[0])
+                    + " username:"
                     + row[12]
-                    + "email:"
+                    + " email:"
                     + row[5]
                 )
         self.logger.info("Invalid users found: %d", count)
@@ -41,11 +41,11 @@ class Filter:
             if is_suspicious_username(row[12]):
                 count += 1
                 self.logger.info(
-                    "Suspicious user: id"
-                    + row[0]
-                    + "username:"
+                    "Suspicious user: id:"
+                    + str(row[0])
+                    + " username:"
                     + row[12]
-                    + "email:"
+                    + " email:"
                     + row[5]
                 )
         self.logger.info("Suspicious users found: %d", count)
