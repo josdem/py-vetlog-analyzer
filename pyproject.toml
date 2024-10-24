@@ -10,9 +10,9 @@ packages = [{include = "py_vetlog_analyzer"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 python-dotenv = "^1.0.1"
-mysql-connector-python = "^9.0.0"
-black = "^24.8.0"
-coverage = "^7.5.4"
+mysql-connector-python = "^9.1.0"
+black = "^24.10.0"
+coverage = "^7.6.3"
 pytest = "^8.3.3"
 pymox = "^1.4.1"
 
