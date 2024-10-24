@@ -1,4 +1,4 @@
-name: Setting up environment
+name: Run Tests
 on:
   push:
     branches: ["main"]
