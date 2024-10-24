@@ -9,6 +9,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
         self.logger = Logger("DogVaccinationStrategy")
 
     def generate_vaccines(self, pet):
+        count = 0
         self.logger.info("Registering vaccination for pet: %s", pet[1])
         now = datetime.now()
         weeks = (now - pet[2]).days / 7
