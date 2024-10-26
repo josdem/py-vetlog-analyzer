@@ -2,8 +2,9 @@ from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
 from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
 
+
 class DogVaccinationStrategy(VaccinationStrategy):
-    
+
     def __init__(self):
         self.logger = Logger("DogVaccinationStrategy")
 
@@ -13,8 +14,10 @@ class DogVaccinationStrategy(VaccinationStrategy):
         now = datetime.now()
         weeks = (now - pet[2]).days / 7
         self.logger.info("Pet is %d weeks old", int(weeks))
+
         def register_vaccination(name):
             self.logger.info("Generating %s vaccination", name)
+
         match int(weeks):
             case weeks if weeks in range(6, 10):
                 register_vaccination("DA2PP")

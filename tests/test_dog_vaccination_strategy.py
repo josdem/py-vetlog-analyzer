@@ -10,6 +10,7 @@ PET_NAME: Final[str] = "Cremita"
 
 context = Context(DogVaccinationStrategy())
 
+
 class FixedTest(unittest.TestCase):
     def test_generate_no_vaccination_records(self):
         pet = [PET_ID, PET_NAME, datetime.now(), PET_TYPE]
@@ -30,6 +31,7 @@ class FixedTest(unittest.TestCase):
     def test_generate_annual_vaccination_records(self):
         pet = [PET_ID, PET_NAME, datetime(2022, 10, 18), PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 5)
-        
+
+
 if __name__ == "__main__":
     unittest.main()
