@@ -18,7 +18,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
 
         def register_vaccination(name):
             self.logger.info("Generating %s vaccination", name)
-            VaccinesGenerator().register_vaccination(name, pet)
+            VaccinesGenerator.register_vaccination(name, pet)
 
         match int(weeks):
             case weeks if weeks in range(6, 10):
