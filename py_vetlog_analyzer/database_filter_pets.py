@@ -1,5 +1,7 @@
 from py_vetlog_analyzer.database_connector import Connector
-from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
+from py_vetlog_analyzer.vaccination_context import Context
+from py_vetlog_analyzer.dog_vaccination_strategy import DogVaccinationStrategy
+from py_vetlog_analyzer.cat_vaccination_strategy import CatVaccinationStrategy
 from py_vetlog_analyzer.logger import Logger
 
 
@@ -22,7 +24,12 @@ class PetFilter:
         pets_waiting_for_vaccines = [n for n in pets if n not in pets_vaccinated]
 
         for row in pets_waiting_for_vaccines:
-            VaccinesGenerator().generate_vaccines(row)
+            if row[3] == "DOG":
+                context = Context(DogVaccinationStrategy())
+                context.vaccinate(row)
+            if row[3] == "CAT":
+                context = Context(CatVaccinationStrategy())
+                context.vaccinate(row)
 
         self.logger.info(
             "Pets waiting for vaccines found: %s", len(pets_waiting_for_vaccines)

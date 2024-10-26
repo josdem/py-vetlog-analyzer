@@ -6,4 +6,4 @@ class Context:
         self.vaccination_strategy = vaccination_strategy
         
     def vaccinate(self, pet):
-        self.vaccination_strategy.vaccinate(pet)
+        self.vaccination_strategy.generate_vaccines(pet)
