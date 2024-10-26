@@ -1,4 +1,5 @@
 from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
+from py_vetlog_analyzer.database_connector import Connector
 from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
 
@@ -17,6 +18,14 @@ class CatVaccinationStrategy(VaccinationStrategy):
 
         def register_vaccination(name):
             self.logger.info("Generating %s vaccination", name)
+            connection = Connector().get_connector()
+            cursor = connection.cursor()
+
+            cursor.execute(
+                "INSERT INTO vaccination (pet_id, name, date, status) VALUES (%s, %s, %s, 'PENDING')",
+                (pet[0], name, datetime.now()),
+            )
+            connection.commit()
 
         match int(weeks):
             case weeks if weeks in range(8, 16):
