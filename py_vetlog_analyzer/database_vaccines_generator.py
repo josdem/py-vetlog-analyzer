@@ -1,15 +1,16 @@
-from py_vetlog_analyzer.database_connector import Connector
 from datetime import datetime
 
 
 class VaccinesGenerator:
 
-    def register_vaccination(self, pet):
-        connection = Connector().get_connector()
-        cursor = connection.cursor()
+    def __init__(self, connection):
+        self.connection = connection
+
+    def register_vaccination(self, name, pet):
+        cursor = self.connection.cursor()
 
         cursor.execute(
             "INSERT INTO vaccination (pet_id, name, date, status) VALUES (%s, %s, %s, 'PENDING')",
-            (pet[0], self, datetime.now()),
+            (pet[0], name, datetime.now()),
         )
-        connection.commit()
+        self.connection.commit()

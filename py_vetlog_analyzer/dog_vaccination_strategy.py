@@ -6,7 +6,8 @@ from datetime import datetime
 
 class DogVaccinationStrategy(VaccinationStrategy):
 
-    def __init__(self):
+    def __init__(self, connection):
+        self.connection = connection
         self.logger = Logger("DogVaccinationStrategy")
 
     def generate_vaccines(self, pet):
@@ -18,7 +19,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
 
         def register_vaccination(name):
             self.logger.info("Generating %s vaccination", name)
-            VaccinesGenerator.register_vaccination(name, pet)
+            VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
             case weeks if weeks in range(6, 10):
