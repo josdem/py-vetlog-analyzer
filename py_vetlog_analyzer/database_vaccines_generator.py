@@ -4,12 +4,12 @@ from datetime import datetime
 
 class VaccinesGenerator:
 
-    def register_vaccination(name, pet):
+    def register_vaccination(self, pet):
         connection = Connector().get_connector()
         cursor = connection.cursor()
 
         cursor.execute(
             "INSERT INTO vaccination (pet_id, name, date, status) VALUES (%s, %s, %s, 'PENDING')",
-            (pet[0], name, datetime.now()),
+            (pet[0], self, datetime.now()),
         )
         connection.commit()
