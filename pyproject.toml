@@ -19,6 +19,7 @@ pymox = "^1.4.1"
 [tool.poetry.scripts]
 filter = "py_vetlog_analyzer.main:find"
 suspicious = "py_vetlog_analyzer.main:suggest"
+vaccines = "py_vetlog_analyzer.main:vaccines"
 
 [build-system]
 requires = ["poetry-core"]
