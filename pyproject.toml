@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-vetlog-analyzer"
-version = "1.1.4"
+version = "1.2.0"
 description = "MySQL database analyzer for Vetlog"
 authors = ["Jose Morales <contact@josdem.io>"]
 license = "Apache 2.0"
@@ -19,6 +19,7 @@ pymox = "^1.4.1"
 [tool.poetry.scripts]
 filter = "py_vetlog_analyzer.main:find"
 suspicious = "py_vetlog_analyzer.main:suggest"
+vaccines = "py_vetlog_analyzer.main:vaccines"
 
 [build-system]
 requires = ["poetry-core"]
