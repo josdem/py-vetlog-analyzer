@@ -43,7 +43,14 @@ python3 -m unittest discover -s tests
 ```bash
 poetry run filter
 poetry run suspicious
+poetry run vaccines
 ```
+
+**Where:**
+
+- `filter` Filters invalid users from the database
+- `suspicious` Filters suspicious users (Maybe invalid users) from the database
+- `vaccines` Generates expected vaccination records for pets without pending vaccination plan
 
 #### To run coverage
 
