@@ -1,6 +1,7 @@
 from typing import Final
 from datetime import datetime
 import unittest
+from unittest.mock import MagicMock
 from py_vetlog_analyzer.vaccination_context import Context
 from py_vetlog_analyzer.dog_vaccination_strategy import DogVaccinationStrategy
 
@@ -8,7 +9,7 @@ PET_ID: Final[str] = "1"
 PET_TYPE: Final[str] = "DOG"
 PET_NAME: Final[str] = "Cremita"
 
-context = Context(DogVaccinationStrategy())
+context = Context(DogVaccinationStrategy(MagicMock()))
 
 
 class FixedTest(unittest.TestCase):

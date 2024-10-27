@@ -25,10 +25,10 @@ class PetFilter:
 
         for row in pets_waiting_for_vaccines:
             if row[3] == "DOG":
-                context = Context(DogVaccinationStrategy())
+                context = Context(DogVaccinationStrategy(self.connection))
                 context.vaccinate(row)
             if row[3] == "CAT":
-                context = Context(CatVaccinationStrategy())
+                context = Context(CatVaccinationStrategy(self.connection))
                 context.vaccinate(row)
 
         self.logger.info(
