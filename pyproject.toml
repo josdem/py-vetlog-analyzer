@@ -17,7 +17,8 @@ pytest = "^8.3.3"
 pymox = "^1.4.1"
 
 [tool.poetry.scripts]
-filter = "py_vetlog_analyzer.main:find"
+filterByUsername = "py_vetlog_analyzer.main:flter_by_username"
+filterByName = "py_vetlog_analyzer.main:flter_by_name"
 suspicious = "py_vetlog_analyzer.main:suggest"
 vaccines = "py_vetlog_analyzer.main:vaccines"
 
