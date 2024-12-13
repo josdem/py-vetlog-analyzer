@@ -18,11 +18,13 @@ class FixedTest(unittest.TestCase):
         self.assertEqual(context.vaccinate(pet), 0)
 
     def test_generate_first_vaccination_records(self):
-        pet = [PET_ID, PET_NAME, datetime(2024, 8, 23), PET_TYPE]
+        two_months_ago = datetime.now().replace(month=datetime.now().month - 2)
+        pet = [PET_ID, PET_NAME, two_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 1)
 
     def test_generate_annual_vaccination_records(self):
-        pet = [PET_ID, PET_NAME, datetime(2022, 10, 18), PET_TYPE]
+        four_months_ago = datetime.now().replace(month=datetime.now().month - 4)
+        pet = [PET_ID, PET_NAME, four_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 2)
 
 
