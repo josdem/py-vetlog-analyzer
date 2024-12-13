@@ -3,7 +3,7 @@ from py_vetlog_analyzer.database_filter_pets import PetFilter
 
 
 def find():
-    Filter().filter_usernames()
+    Filter().filter_users()
 
 
 def suggest():

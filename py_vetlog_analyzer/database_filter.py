@@ -10,14 +10,14 @@ class Filter:
         self.cursor = self.connection.cursor()
         self.logger = Logger("Filter")
 
-    def filter_usernames(self):
+    def filter_users(self, column: int):
         count = 0
         self.logger.info("Finding usernames")
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
         self.logger.info("Total users found: %d", len(result))
         for row in result:
-            if not filter_username(row[12]):
+            if not filter_username(row[column]):
                 count += 1
                 self.logger.info(
                     "No valid user found: id:"
