@@ -6,6 +6,7 @@ class FixedTest(unittest.TestCase):
     def test_filter_usname(self):
         self.assertTrue(filter_username("josdem"))
         self.assertTrue(filter_username("johndoe"))
+        self.assertTrue(filter_username("IRIS"))
         self.assertFalse(filter_username("NHUQfuLarRMDj"))
         self.assertFalse(filter_username("rJVyFMNsmXhPUvG"))
 

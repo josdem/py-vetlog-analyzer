@@ -1,4 +1,6 @@
 def filter_username(username):
+    if username.isupper():
+        return True
     uppercase = 0
     for char in username:
         if char.isupper():
