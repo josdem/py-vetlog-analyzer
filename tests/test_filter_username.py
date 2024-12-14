@@ -9,6 +9,9 @@ class FixedTest(unittest.TestCase):
         self.assertTrue(filter_username("IRIS"))
         self.assertFalse(filter_username("NHUQfuLarRMDj"))
         self.assertFalse(filter_username("rJVyFMNsmXhPUvG"))
+        self.assertFalse(filter_username("rVhBLNPSNIPE"))
+        self.assertFalse(filter_username("SxeQsgXI"))
+        self.assertFalse(filter_username("NDDmMAUftYXkxO"))
 
 
 if __name__ == "__main__":
