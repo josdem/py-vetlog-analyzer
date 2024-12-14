@@ -41,7 +41,8 @@ python3 -m unittest discover -s tests
 #### To run with poetry
 
 ```bash
-poetry run filter
+poetry run filterByUsername
+poetry run filterByName
 poetry run suspicious
 poetry run vaccines
 ```
