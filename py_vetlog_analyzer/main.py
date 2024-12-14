@@ -7,7 +7,7 @@ def flter_by_username():
 
 
 def flter_by_name():
-    Filter().filter_users(7)
+    Filter().filter_users(13)
 
 
 def suggest():
