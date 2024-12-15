@@ -17,7 +17,7 @@ class Filter:
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
         self.logger.info("Total users found: %d", len(result))
-        remover = Remover()
+        remover = Remover(self.connection)
         for row in result:
             if not filter_username(row[column]):
                 count += 1
