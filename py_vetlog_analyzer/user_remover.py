@@ -10,6 +10,6 @@ class Remover:
 
     def remove_user(self, id: int):
         self.logger.info("Deleting user with id: %d", id)
-        self.cursor.execute("DELETE FROM user WHERE id = %d", (id,))
+        self.cursor.execute("DELETE FROM user WHERE id = %s", (id,))
         self.connection.commit()
         self.connection.close()

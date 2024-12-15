@@ -10,7 +10,7 @@ class FixedTest(unittest.TestCase):
         db_filter.cursor = MagicMock()
         db_filter.remove_user(2)
         db_filter.cursor.execute.assert_called_with(
-            "DELETE FROM user WHERE id = %d", (2,)
+            "DELETE FROM user WHERE id = %s", (2,)
         )
         db_filter.connection.commit.assert_called_once()
         db_filter.connection.close.assert_called_once()
