@@ -3,14 +3,13 @@ from py_vetlog_analyzer.logger import Logger
 
 
 class Remover:
-    def __init__(self, id: int):
+    def __init__(self):
         self.connection = Connector().get_connector()
         self.cursor = self.connection.cursor()
         self.logger = Logger("Filter")
-        self.userId = id
 
-    def remove_user(self):
-        self.logger.info("Deleting user with id: %d", self.userId)
-        self.cursor.execute("DELETE FROM user WHERE id = %d", (self.userId,))
+    def remove_user(self, id: int):
+        self.logger.info("Deleting user with id: %d", id)
+        self.cursor.execute("DELETE FROM user WHERE id = %d", (id,))
         self.connection.commit()
         self.connection.close()
