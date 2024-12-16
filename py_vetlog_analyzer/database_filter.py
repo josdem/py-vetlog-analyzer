@@ -1,5 +1,6 @@
 from py_vetlog_analyzer.filter_username import filter_username
 from py_vetlog_analyzer.suspicious_username import is_suspicious_username
+from py_vetlog_analyzer.user_remover import Remover
 from py_vetlog_analyzer.database_connector import Connector
 from py_vetlog_analyzer.logger import Logger
 
@@ -16,6 +17,7 @@ class Filter:
         self.cursor.execute("SELECT * FROM user")
         result = self.cursor.fetchall()
         self.logger.info("Total users found: %d", len(result))
+        remover = Remover(self.connection)
         for row in result:
             if not filter_username(row[column]):
                 count += 1
@@ -27,6 +29,7 @@ class Filter:
                     + " email:"
                     + row[5]
                 )
+                remover.remove_user(row[0])
         self.logger.info("Invalid users found: %d", count)
         self.connection.close()
         return count
