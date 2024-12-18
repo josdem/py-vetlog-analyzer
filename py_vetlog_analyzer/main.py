@@ -3,11 +3,11 @@ from py_vetlog_analyzer.database_filter_pets import PetFilter
 
 
 def flter_by_username():
-    Filter().filter_users(12)
+    Filter().filter_users(10)
 
 
 def flter_by_name():
-    Filter().filter_users(13)
+    Filter().filter_users(11)
 
 
 def suggest():

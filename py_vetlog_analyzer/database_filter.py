@@ -25,6 +25,10 @@ class Filter:
                     "No valid user found: id:"
                     + str(row[0])
                     + " username:"
+                    + row[10]
+                    + "first_name:"
+                    + row[11]
+                    + "last_name:"
                     + row[12]
                     + " email:"
                     + row[5]
@@ -47,6 +51,10 @@ class Filter:
                     "Suspicious user: id:"
                     + str(row[0])
                     + " username:"
+                    + row[10]
+                    + "first_name:"
+                    + row[11]
+                    + "last_name:"
                     + row[12]
                     + " email:"
                     + row[5]

@@ -7,6 +7,8 @@ class FixedTest(unittest.TestCase):
         self.assertTrue(filter_username("josdem"))
         self.assertTrue(filter_username("johndoe"))
         self.assertTrue(filter_username("IRIS"))
+        self.assertTrue(filter_username("Max"))
+        self.assertTrue(filter_username("Jc"))
         self.assertFalse(filter_username("NHUQfuLarRMDj"))
         self.assertFalse(filter_username("rJVyFMNsmXhPUvG"))
         self.assertFalse(filter_username("rVhBLNPSNIPE"))
