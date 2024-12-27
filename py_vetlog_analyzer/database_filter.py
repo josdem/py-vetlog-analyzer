@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class Filter:
     def __init__(self):
         self.connection = Connector().get_connector()
