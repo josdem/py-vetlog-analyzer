@@ -11,6 +11,7 @@ env:
   PASSWORD: ${{ secrets.PASSWORD }}
   VETLOG_USER: ${{ secrets.VETLOG_USER }}
   VETLOG_PASSWORD: ${{ secrets.VETLOG_PASSWORD }}
+  FACTOR: ${{ secrets.FACTOR }}
 jobs:
   build:
     runs-on: ubuntu-latest
