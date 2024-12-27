@@ -4,16 +4,17 @@ from py_vetlog_analyzer.filter_username import filter_username
 
 class FixedTest(unittest.TestCase):
     def test_filter_usname(self):
-        self.assertTrue(filter_username("josdem"))
-        self.assertTrue(filter_username("johndoe"))
-        self.assertTrue(filter_username("IRIS"))
-        self.assertTrue(filter_username("Max"))
-        self.assertTrue(filter_username("Jc"))
-        self.assertFalse(filter_username("NHUQfuLarRMDj"))
-        self.assertFalse(filter_username("rJVyFMNsmXhPUvG"))
-        self.assertFalse(filter_username("rVhBLNPSNIPE"))
-        self.assertFalse(filter_username("SxeQsgXI"))
-        self.assertFalse(filter_username("NDDmMAUftYXkxO"))
+        factor = 0.5
+        self.assertTrue(filter_username("josdem", factor))
+        self.assertTrue(filter_username("johndoe", factor))
+        self.assertTrue(filter_username("IRIS", factor))
+        self.assertTrue(filter_username("Max", factor))
+        self.assertTrue(filter_username("Jc", factor))
+        self.assertFalse(filter_username("NHUQfuLarRMDj", factor))
+        self.assertFalse(filter_username("rJVyFMNsmXhPUvG", factor))
+        self.assertFalse(filter_username("rVhBLNPSNIPE", factor))
+        self.assertFalse(filter_username("SxeQsgXI", factor))
+        self.assertFalse(filter_username("NDDmMAUftYXkxO", factor))
 
 
 if __name__ == "__main__":

@@ -1,15 +1,19 @@
+import os
 from py_vetlog_analyzer.filter_username import filter_username
 from py_vetlog_analyzer.suspicious_username import is_suspicious_username
 from py_vetlog_analyzer.user_remover import Remover
 from py_vetlog_analyzer.database_connector import Connector
 from py_vetlog_analyzer.logger import Logger
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class Filter:
     def __init__(self):
         self.connection = Connector().get_connector()
         self.cursor = self.connection.cursor()
         self.logger = Logger("Filter")
+        self.factor = os.getenv("FACTOR")
 
     def filter_users(self, column: int):
         count = 0
@@ -19,7 +23,7 @@ class Filter:
         self.logger.info("Total users found: %d", len(result))
         remover = Remover(self.connection)
         for row in result:
-            if not filter_username(row[column]):
+            if not filter_username(row[column], self.factor):
                 count += 1
                 self.logger.info(
                     "No valid user found: id:"
