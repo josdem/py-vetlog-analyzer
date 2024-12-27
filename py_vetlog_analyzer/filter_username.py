@@ -7,4 +7,4 @@ def filter_username(username, factor):
     for char in username:
         if char.isupper():
             uppercase += 1
-    return uppercase / len(username) < factor
+    return uppercase / len(username) < float(factor)
