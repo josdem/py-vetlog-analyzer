@@ -1,5 +1,5 @@
 from typing import Final
-from datetime import datetime
+from datetime import datetime, timedelta
 import unittest
 from unittest.mock import MagicMock
 from py_vetlog_analyzer.vaccination_context import Context
@@ -18,22 +18,22 @@ class FixedTest(unittest.TestCase):
         self.assertEqual(context.vaccinate(pet), 0)
 
     def test_generate_first_vaccination_records(self):
-        two_months_ago = datetime.now().replace(month=datetime.now().month - 2)
+        two_months_ago = datetime.now() - timedelta(weeks=6, days=8)
         pet = [PET_ID, PET_NAME, two_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 2)
 
     def test_generate_second_vaccination_records(self):
-        three_months_ago = datetime.now().replace(month=datetime.now().month - 3)
+        three_months_ago = datetime.now() - timedelta(weeks=10, days=8)
         pet = [PET_ID, PET_NAME, three_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 3)
 
     def test_generate_third_vaccination_records(self):
-        four_months_ago = datetime.now().replace(month=datetime.now().month - 3, day=1)
+        four_months_ago = datetime.now() - timedelta(weeks=14, days=8)
         pet = [PET_ID, PET_NAME, four_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 4)
 
     def test_generate_annual_vaccination_records(self):
-        six_months_ago = datetime.now().replace(month=datetime.now().month - 6)
+        six_months_ago = datetime.now() - timedelta(weeks=20, days=8)
         pet = [PET_ID, PET_NAME, six_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 5)
 
