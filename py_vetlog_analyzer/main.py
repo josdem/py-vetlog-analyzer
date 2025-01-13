@@ -10,6 +10,10 @@ def flter_by_name():
     Filter().filter_users(11)
 
 
+def flter_by_last_name():
+    Filter().filter_users(12)
+
+
 def suggest():
     Filter().suspicious_usernames()
 

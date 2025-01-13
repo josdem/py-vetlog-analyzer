@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-vetlog-analyzer"
-version = "1.2.5"
+version = "1.2.6"
 description = "MySQL database analyzer for Vetlog"
 authors = ["Jose Morales <contact@josdem.io>"]
 license = "Apache 2.0"
@@ -19,6 +19,7 @@ pymox = "^1.4.1"
 [tool.poetry.scripts]
 filterByUsername = "py_vetlog_analyzer.main:flter_by_username"
 filterByName = "py_vetlog_analyzer.main:flter_by_name"
+filterByLastName = "py_vetlog_analyzer.main:flter_by_last_name"
 suspicious = "py_vetlog_analyzer.main:suggest"
 vaccines = "py_vetlog_analyzer.main:vaccines"
 

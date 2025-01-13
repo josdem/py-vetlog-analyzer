@@ -1,7 +1,7 @@
 name: Run Tests
 on:
   push:
-    branches: ["main"]
+    branches: ["feature/56"]
   pull_request:
     branches: ["main"]
 env:
