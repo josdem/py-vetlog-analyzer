@@ -32,11 +32,14 @@ python -m black "py_vetlog_analyzer" "tests"
 python -m unittest discover -s tests
 ```
 
-or
+#### To run a single test
 
 ```bash
-python3 -m unittest discover -s tests
+python -m unittest tests/${test_name}.py
 ```
+
+Where:
+- `${test_name}.py` is the test name you want to run
 
 #### To run with poetry
 

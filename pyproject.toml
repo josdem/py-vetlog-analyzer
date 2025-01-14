@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-vetlog-analyzer"
-version = "1.2.6"
+version = "1.2.7"
 description = "MySQL database analyzer for Vetlog"
 authors = ["Jose Morales <contact@josdem.io>"]
 license = "Apache 2.0"
