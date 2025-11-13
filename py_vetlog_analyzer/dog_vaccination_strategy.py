@@ -42,6 +42,5 @@ class DogVaccinationStrategy(VaccinationStrategy):
                 register_vaccination("Deworming")
                 register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
-                register_vaccination("Canine Influenza")
-                count = 5
+                count = 4
         return count
