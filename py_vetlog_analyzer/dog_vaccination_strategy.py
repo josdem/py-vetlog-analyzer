@@ -29,7 +29,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
                 count = 5
-            case weeks if weeks > 12:
+            case weeks if weeks >= 12:
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
