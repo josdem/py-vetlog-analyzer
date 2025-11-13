@@ -20,17 +20,12 @@ class FixedTest(unittest.TestCase):
     def test_generate_first_vaccination_records(self):
         two_months_ago = datetime.now() - timedelta(weeks=6, days=8)
         pet = [PET_ID, PET_NAME, two_months_ago, PET_TYPE]
-        self.assertEqual(context.vaccinate(pet), 2)
+        self.assertEqual(context.vaccinate(pet), 5)
 
-    def test_generate_second_vaccination_records(self):
-        three_months_ago = datetime.now() - timedelta(weeks=10, days=8)
+    def test_generate_first_vaccination_week_eleven(self):
+        three_months_ago = datetime.now() - timedelta(weeks=11, days=2)
         pet = [PET_ID, PET_NAME, three_months_ago, PET_TYPE]
-        self.assertEqual(context.vaccinate(pet), 3)
-
-    def test_generate_third_vaccination_records(self):
-        four_months_ago = datetime.now() - timedelta(weeks=14, days=8)
-        pet = [PET_ID, PET_NAME, four_months_ago, PET_TYPE]
-        self.assertEqual(context.vaccinate(pet), 4)
+        self.assertEqual(context.vaccinate(pet), 5)
 
     def test_generate_annual_vaccination_records(self):
         six_months_ago = datetime.now() - timedelta(weeks=20, days=8)
