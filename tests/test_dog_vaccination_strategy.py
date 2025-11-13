@@ -13,9 +13,9 @@ context = Context(DogVaccinationStrategy(MagicMock()))
 
 
 class FixedTest(unittest.TestCase):
-    def test_generate_no_vaccination_records(self):
+    def test_generate_early_vaccination_records(self):
         pet = [PET_ID, PET_NAME, datetime.now(), PET_TYPE]
-        self.assertEqual(context.vaccinate(pet), 0)
+        self.assertEqual(context.vaccinate(pet), 1)
 
     def test_generate_first_vaccination_records(self):
         two_months_ago = datetime.now() - timedelta(weeks=6, days=8)
