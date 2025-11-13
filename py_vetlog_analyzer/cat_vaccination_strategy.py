@@ -23,11 +23,11 @@ class CatVaccinationStrategy(VaccinationStrategy):
 
         match int(weeks):
             case weeks if weeks in range(8, 16):
-                register_vaccination("FVRCP")
+                register_vaccination("TRICAT ")
                 register_vaccination("Deworming")
                 count = 1
             case weeks if weeks >= 16:
-                register_vaccination("FVRCP")
+                register_vaccination("TRICAT ")
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
                 count = 2
