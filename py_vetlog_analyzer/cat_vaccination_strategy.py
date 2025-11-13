@@ -22,13 +22,16 @@ class CatVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
+            case weeks if weeks in range(0, 8):
+                register_vaccination("Deworming")
+                count = 1
             case weeks if weeks in range(8, 16):
                 register_vaccination("FVRCP")
                 register_vaccination("Deworming")
-                count = 1
+                count = 2
             case weeks if weeks >= 16:
                 register_vaccination("FVRCP")
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
-                count = 2
+                count = 3
         return count
