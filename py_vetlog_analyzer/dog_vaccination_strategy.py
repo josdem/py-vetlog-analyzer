@@ -22,25 +22,16 @@ class DogVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
-            case weeks if weeks in range(6, 10):
-                register_vaccination("DA2PP")
+            case weeks if weeks in range(6, 12):
+                register_vaccination("PUPPY")
+                register_vaccination("C4CV")
+                register_vaccination("C6CV")
                 register_vaccination("Deworming")
-                count = 2
-            case weeks if weeks in range(10, 14):
-                register_vaccination("DA2PP")
-                register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
-                count = 3
-            case weeks if weeks in range(14, 17):
-                register_vaccination("DA2PP")
-                register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
-                count = 4
-            case weeks if weeks >= 17:
+                count = 5
+            case weeks if weeks > 12:
                 register_vaccination("DA2PP")
                 register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
                 register_vaccination("Canine Influenza")
                 count = 5
