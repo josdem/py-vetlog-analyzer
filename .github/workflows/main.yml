@@ -1,9 +1,9 @@
-name: Setting up environment
+name: Run Tests
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 env:
   HOST: localhost
   DATABASE: vetlog
@@ -11,6 +11,7 @@ env:
   PASSWORD: ${{ secrets.PASSWORD }}
   VETLOG_USER: ${{ secrets.VETLOG_USER }}
   VETLOG_PASSWORD: ${{ secrets.VETLOG_PASSWORD }}
+  FACTOR: ${{ secrets.FACTOR }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,15 +55,52 @@ jobs:
             username varchar(255) NOT NULL,
             PRIMARY KEY (id)
           );" -u$USER -p$PASSWORD -D$DATABASE
+          echo "Creating breed table"
+          mysql -e "CREATE TABLE breed(
+            id bigint NOT NULL AUTO_INCREMENT,
+            date_created datetime(6) NOT NULL,
+            name varchar(255) NOT NULL,
+            type varchar(255) NOT NULL,
+            PRIMARY KEY (id)
+          );" -u$USER -p$PASSWORD -D$DATABASE
+          echo "Creating pet table"
+          mysql -e "CREATE TABLE pet(
+            id bigint NOT NULL AUTO_INCREMENT,
+            birth_date datetime(6) NOT NULL,
+            date_created datetime(6) NOT NULL,
+            dewormed bit(1) NULL,
+            name varchar(255) NOT NULL,
+            status varchar(255) NOT NULL,
+            sterilized bit(1) NULL,
+            uuid varchar(255) NOT NULL,
+            vaccinated bit(1) NULL,
+            adopter_id bigint DEFAULT NULL,
+            breed_id bigint DEFAULT NULL,
+            user_id bigint DEFAULT NULL,
+            pet_id bigint DEFAULT NULL,
+            PRIMARY KEY (id)
+          );" -u$USER -p$PASSWORD -D$DATABASE
+          echo "Creating vaccination table"
+          mysql -e "CREATE TABLE vaccination(
+            id bigint NOT NULL AUTO_INCREMENT,
+            date date NOT NULL,
+            name varchar(255) NOT NULL,
+            status enum('APPLIED','PENDING') NOT NULL,
+            pet_id bigint DEFAULT NULL,
+            PRIMARY KEY (id)
+          );" -u$USER -p$PASSWORD -D$DATABASE
           echo "Creating vetlog user"
           mysql -e "CREATE USER '$VETLOG_USER'@'localhost' IDENTIFIED BY '$VETLOG_PASSWORD';" -u$USER -p$PASSWORD
           echo "Giving permissions"
           mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$VETLOG_USER'@'localhost';" -u$USER -p$PASSWORD
-          echo "Creating users"
+          echo "Creating rows"
           mysql -e "INSERT INTO user VALUES(1, 0, 0, 0,'2024-04-21 20:08:51','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','josdem');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(3, 0, 0, 0,'2024-04-21 20:08:53','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','NHUQfuLarRMDj');" -u$USER -p$PASSWORD -D$DATABASE
           mysql -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');" -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG');" -u$USER -p$PASSWORD -D$DATABASE
+          mysql -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',NULL,'Cremita','OWNED',NULL,'0694c042-a4ae-4f99-b329-98f519da0164',NULL,NULL,1,1,NULL);" -u$USER -p$PASSWORD -D$DATABASE
+
       - name: Execute tests
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
@@ -73,9 +111,15 @@ jobs:
           coverage run -m unittest discover
           coverage report -m
           coverage html
+          coverage xml
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
           path: htmlcov
           retention-days: 30
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
