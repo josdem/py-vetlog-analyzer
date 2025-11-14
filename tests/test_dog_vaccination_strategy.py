@@ -23,7 +23,7 @@ class FixedTest(unittest.TestCase):
         self.assertEqual(context.vaccinate(pet), 5)
 
     def test_generate_first_vaccination_week_eleven(self):
-        three_months_ago = datetime.now() - timedelta(weeks=11, days=8)
+        three_months_ago = datetime.now() - timedelta(weeks=11, days=4)
         pet = [PET_ID, PET_NAME, three_months_ago, PET_TYPE]
         self.assertEqual(context.vaccinate(pet), 5)
 
