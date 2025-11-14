@@ -141,7 +141,4 @@ jobs:
           # Set 'sonar.projectVersion' to the latest commit hash. This is used to ensure
           # every scan is uniquely linked to the exact code state.
           args: >
-            -Dsonar.projectVersion=${{ github.sha }} 
-            -Dsonar.projectKey=josdem_py-vetlog-analyzer
-            -Dsonar.organization=josdem-io
-            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.projectVersion=${{ github.sha }}
