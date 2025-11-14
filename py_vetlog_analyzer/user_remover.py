@@ -1,4 +1,3 @@
-from py_vetlog_analyzer.database_connector import Connector
 from py_vetlog_analyzer.logger import Logger
 
 
