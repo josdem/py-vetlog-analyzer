@@ -1,28 +1,38 @@
-[tool.poetry]
+[project]
 name = "py-vetlog-analyzer"
 version = "1.2.7"
 description = "MySQL database analyzer for Vetlog"
-authors = ["Jose Morales <contact@josdem.io>"]
-license = "Apache 2.0"
 readme = "README.md"
-packages = [{include = "py_vetlog_analyzer"}]
+requires-python = ">=3.12"
+license = { text = "Apache 2.0" }
+authors = [{ name = "Jose Morales", email = "contact@josdem.io" }]
+dependencies = [
+    "coverage>=7.11.3",
+    "mysql-connector-python>=9.5.0",
+    "pymox>=1.4.1",
+    "pytest>=9.0.1",
+    "python-dotenv>=1.2.1",
+    "ruff>=0.14.5",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-python-dotenv = "^1.0.1"
-mysql-connector-python = "^9.1.0"
-black = "^24.10.0"
-coverage = "^7.6.3"
-pytest = "^8.3.3"
-pymox = "^1.4.1"
-
-[tool.poetry.scripts]
-filterByUsername = "py_vetlog_analyzer.main:flter_by_username"
-filterByName = "py_vetlog_analyzer.main:flter_by_name"
-filterByLastName = "py_vetlog_analyzer.main:flter_by_last_name"
-suspicious = "py_vetlog_analyzer.main:suggest"
+# Replaced [tool.poetry.scripts]
+[project.scripts]
+filter_by_username = "py_vetlog_analyzer.main:flter_by_username"
+filter_by_name = "py_vetlog_analyzer.main:flter_by_name"
+filter_by_last_name = "py_vetlog_analyzer.main:flter_by_last_name"
+suggest = "py_vetlog_analyzer.main:suggest"
 vaccines = "py_vetlog_analyzer.main:vaccines"
 
+# [tool.ruff]
+# line-length = 88
+# target-version = "py312"
+
+# [tool.ruff.lint]
+# select = ["E", "F", "I"]
+
+# [tool.ruff.format]
+# quote-style = "single"
+
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
