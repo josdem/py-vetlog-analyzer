@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          # Fetch depth 0 is important for SonarQube to get full history
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12.3"
@@ -105,6 +108,7 @@ jobs:
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
           python -m unittest discover ${{ github.workspace }} -s tests
+
       - name: Run tests with coverage
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
@@ -133,3 +137,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          # Set 'sonar.projectVersion' to the latest commit hash. This is used to ensure
+          # every scan is uniquely linked to the exact code state.
+          args: >
+            -Dsonar.projectVersion=${{ github.sha }} 
+            -Dsonar.projectKey=josdem_py-vetlog-analyzer
+            -Dsonar.organization=josdem-io
+            -Dsonar.python.coverage.reportPaths=coverage.xml
