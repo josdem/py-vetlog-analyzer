@@ -25,6 +25,9 @@ class DogVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
+            case weeks if weeks in range(0, 6):
+                register_vaccination("Deworming")
+                count = 1
             case weeks if weeks in range(6, 10):
                 register_vaccination(C6CV)
                 register_vaccination("Deworming")
