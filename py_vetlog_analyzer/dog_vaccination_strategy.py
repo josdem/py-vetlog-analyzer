@@ -1,7 +1,10 @@
+from typing import Final
 from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
 from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
 from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
+
+C6CV: Final[str] = "C6CV"
 
 
 class DogVaccinationStrategy(VaccinationStrategy):
@@ -22,17 +25,19 @@ class DogVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
+            case weeks if weeks in range(0, 6):
+                register_vaccination("Deworming")
+                count = 1
             case weeks if weeks in range(6, 12):
                 register_vaccination("PUPPY")
                 register_vaccination("C4CV")
-                register_vaccination("C6CV")
+                register_vaccination(C6CV)
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
                 count = 5
             case weeks if weeks >= 12:
-                register_vaccination("DA2PP")
+                register_vaccination(C6CV)
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
-                register_vaccination("Canine Influenza")
                 count = 4
         return count
