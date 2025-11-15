@@ -28,25 +28,16 @@ class DogVaccinationStrategy(VaccinationStrategy):
             case weeks if weeks in range(0, 6):
                 register_vaccination("Deworming")
                 count = 1
-            case weeks if weeks in range(6, 10):
+            case weeks if weeks in range(6, 12):
+                register_vaccination("PUPPY")
+                register_vaccination("C4CV")
                 register_vaccination(C6CV)
                 register_vaccination("Deworming")
-                count = 2
-            case weeks if weeks in range(10, 14):
-                register_vaccination(C6CV)
-                register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
-                count = 3
-            case weeks if weeks in range(14, 17):
-                register_vaccination(C6CV)
-                register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
-                count = 4
-            case weeks if weeks >= 17:
+                count = 5
+            case weeks if weeks >= 12:
                 register_vaccination(C6CV)
                 register_vaccination("Deworming")
-                register_vaccination("Leptospirosis")
                 register_vaccination("Rabies")
                 count = 4
         return count
