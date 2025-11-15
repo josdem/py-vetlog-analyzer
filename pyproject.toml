@@ -1,6 +1,6 @@
 [project]
 name = "py-vetlog-analyzer"
-version = "1.2.7"
+version = "1.2.1"
 description = "MySQL database analyzer for Vetlog"
 readme = "README.md"
 requires-python = ">=3.12"
