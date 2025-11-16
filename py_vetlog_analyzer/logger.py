@@ -13,4 +13,4 @@ class Logger:
         self.log.addHandler(self.console_handler)
 
     def info(self, message, args=None):
-        self.log.info(message) if args == None else self.log.info(message, args)
+        self.log.info(message) if args is None else self.log.info(message, args)

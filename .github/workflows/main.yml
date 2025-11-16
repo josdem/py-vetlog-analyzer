@@ -25,21 +25,14 @@ jobs:
         with:
           python-version: "3.12.3"
 
-      - name: Install Poetry
-        uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
+      - name: Install with uv
+        run: |
+          pip install uv
+          uv sync
 
-      - name: Install dependencies
-        run: poetry install --no-interaction
-
-      - name: Format with Black
-        uses: psf/black@05f0a8ce1f71fbb36e1e032d3b518c7b945089a2 # stable
-        with:
-          src: "py_vetlog_analyzer/ tests/"
-          options: "--check --verbose"
+      - name: Format with ruff
+        run: |
+          uv run ruff check
 
       - name: Start MySQL
         run: |
@@ -128,21 +121,13 @@ jobs:
           path: htmlcov
           retention-days: 30
 
-      # If you are using Java:
-
-      # - name: Set up JDK
-      #   uses: actions/setup-java@v3
-      #   with:
-      #     distribution: temurin
-      #     java-version: "17"
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          # Set 'sonar.projectVersion' to the latest commit hash. This is used to ensure
-          # every scan is uniquely linked to the exact code state.
+          # Links Sonar project to GitHub commit hash
           args: >
             -Dsonar.projectVersion=${{ github.sha }}
