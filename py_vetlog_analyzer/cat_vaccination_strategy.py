@@ -5,6 +5,8 @@ from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
 
 TRICAT: Final[str] = "TRICAT"
+TRICAT_BOOST: Final[str] = "TRICAT_BOOST"
+FeLV: Final[str] = "FeLV"
 
 
 class CatVaccinationStrategy(VaccinationStrategy):
@@ -25,13 +27,16 @@ class CatVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
-            case weeks if weeks in range(0, 8):
+            case weeks if weeks in range(0, 9):
                 register_vaccination("Deworming")
                 count = 1
-            case weeks if weeks in range(8, 16):
+            case weeks if weeks in range(9, 17):
                 register_vaccination(TRICAT)
                 register_vaccination("Deworming")
-                count = 2
+                register_vaccination(TRICAT_BOOST)
+                register_vaccination(FeLV)
+                register_vaccination("Rabies")
+                count = 5
             case weeks if weeks >= 16:
                 register_vaccination(TRICAT)
                 register_vaccination("Deworming")
