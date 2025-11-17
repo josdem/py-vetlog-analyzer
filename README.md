@@ -67,3 +67,9 @@ uv run pytest -k vaccination
 - https://github.com/josdem/py-vetlog-buddy/graphs/contributors
 - https://github.com/josdem/vetlog-spring-boot
 - https://pypi.org/project/py-vetlog-analyzer
+
+---
+
+<div align="center">
+  This project follows the <a href="https://github.com/all-contributors/all-contributors">all contributors</a> specification. Contributions of any kind welcome!
+</div>
