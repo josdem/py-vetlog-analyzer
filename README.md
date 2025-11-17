@@ -60,3 +60,10 @@ uv run pytest -k vaccination
 ```
 
 ## 🚧 WIP
+
+**Links**
+
+- https://github.com/josdem/py-vetlog-analyzer/wiki
+- https://github.com/josdem/py-vetlog-buddy/graphs/contributors
+- https://github.com/josdem/vetlog-spring-boot
+- https://pypi.org/project/py-vetlog-analyzer
