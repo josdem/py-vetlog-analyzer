@@ -1,74 +1,46 @@
-Python Vetlog Analyzer
+# 🐍 Vetlog Buddy
+
+Python-based helper for [vetlog-spring-boot](https://github.com/josdem/vetlog-spring-boot)
+
+![Under Construction](https://img.shields.io/badge/status-under_construction-yellow?style=for-the-badge)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 [![GitHub](https://github.com/josdem/py-vetlog-analyzer/actions/workflows/main.yml/badge.svg)](https://github.com/josdem/py-vetlog-analyzer/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josdem_py-vetlog-analyzer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josdem_py-vetlog-analyzer)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Data analysis for [Vetlog](https://vetlog.org/) database
+## Setup
 
-#### Requirements
+### Prerequisites
 
-- Python version `3.12.3` or above
+- Python 3.12+
+- uv
 
-#### To install dependencies
+### Installation
 
-```bash
-poetry install
+1. Clone the repository
+
+```sh
+git clone hhttps://github.com/josdem/py-vetlog-buddy
+cd py-vetlog-buddy
 ```
 
-#### To format code
+2. Install dependencies
 
-```bash
-python -m black "py_vetlog_analyzer" "tests"
+```sh
+uv sync
 ```
 
-#### To run tests
+## Usage
 
-```bash
-python -m unittest discover -s tests
+```sh
+uv run filter
+uv run suspicious
+uv run vaccines
 ```
-
-#### To run a single test
-
-```bash
-python -m unittest tests/${test_name}.py
-```
-
-Where:
-- `${test_name}.py` is the test name you want to run
-
-#### To run with poetry
-
-```bash
-poetry run filterByUsername
-poetry run filterByName
-poetry run suspicious
-poetry run vaccines
-```
-
-**Where:**
-
-- `filter` Filters invalid users from the database
-- `suspicious` Filters suspicious users (Maybe invalid users) from the database
-- `vaccines` Generates expected vaccination records for pets without pending vaccination plan
-
-#### To run coverage
-
-```bash
-coverage run -m unittest discover
-coverage report -m
-coverage html
-```
-
-#### Configuration
-
-https://github.com/josdem/py-vetlog-analyzer/wiki
-
-#### PyPi project
-
-https://pypi.org/project/py-vetlog-analyzer/
 
 ## Contributors ✨
 
