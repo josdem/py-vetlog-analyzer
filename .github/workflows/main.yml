@@ -4,7 +4,8 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-    
+
+# Consider moving some/all of this to step-level
 env:
   HOST: localhost
   DATABASE: vetlog
@@ -23,6 +24,7 @@ jobs:
         with:
           # Fetch depth 0 is important for SonarQube to get full history
           fetch-depth: 0
+
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.3.0
         with:
           python-version: "3.12.3"
@@ -37,11 +39,19 @@ jobs:
           uv run ruff check
 
       - name: Start MySQL
+        env:
+          # Set MySQL credentials from GitHub secrets
+          # MYSQL_USER and MYSQL_PWD are automatically read by mysql CLI
+          MYSQL_USER: ${{ secrets.USERNAME }}
+          MYSQL_PWD: ${{ secrets.PASSWORD }}
         run: |
           sudo /etc/init.d/mysql start
-          mysql -e "CREATE DATABASE $DATABASE;" -u$USER -p$PASSWORD
+
+          echo "Creating database: $DATABASE"
+          mysql -e "CREATE DATABASE $DATABASE;"
+
           echo "Creating user table"
-          mysql -e "CREATE TABLE user(
+          mysql "$DATABASE" -e "CREATE TABLE user(
             id bigint(20) NOT NULL AUTO_INCREMENT,
             account_non_expired bit(1) NOT NULL,
             account_non_locked bit(1) NOT NULL,
@@ -56,17 +66,19 @@ jobs:
             role varchar(255) NOT NULL,
             username varchar(255) NOT NULL,
             PRIMARY KEY (id)
-          );" -u$USER -p$PASSWORD -D$DATABASE
+          );"
+
           echo "Creating breed table"
-          mysql -e "CREATE TABLE breed(
+          mysql "$DATABASE" -e "CREATE TABLE breed(
             id bigint NOT NULL AUTO_INCREMENT,
             date_created datetime(6) NOT NULL,
             name varchar(255) NOT NULL,
             type varchar(255) NOT NULL,
             PRIMARY KEY (id)
-          );" -u$USER -p$PASSWORD -D$DATABASE
+          );"
+
           echo "Creating pet table"
-          mysql -e "CREATE TABLE pet(
+          mysql "$DATABASE" -e "CREATE TABLE pet(
             id bigint NOT NULL AUTO_INCREMENT,
             birth_date datetime(6) NOT NULL,
             date_created datetime(6) NOT NULL,
@@ -81,27 +93,35 @@ jobs:
             user_id bigint DEFAULT NULL,
             pet_id bigint DEFAULT NULL,
             PRIMARY KEY (id)
-          );" -u$USER -p$PASSWORD -D$DATABASE
+          );"
+
           echo "Creating vaccination table"
-          mysql -e "CREATE TABLE vaccination(
+          mysql "$DATABASE" -e "CREATE TABLE vaccination(
             id bigint NOT NULL AUTO_INCREMENT,
             date date NOT NULL,
             name varchar(255) NOT NULL,
             status enum('APPLIED','PENDING') NOT NULL,
             pet_id bigint DEFAULT NULL,
             PRIMARY KEY (id)
-          );" -u$USER -p$PASSWORD -D$DATABASE
-          echo "Creating vetlog user"
-          mysql -e "CREATE USER '$VETLOG_USER'@'localhost' IDENTIFIED BY '$VETLOG_PASSWORD';" -u$USER -p$PASSWORD
-          echo "Giving permissions"
-          mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$VETLOG_USER'@'localhost';" -u$USER -p$PASSWORD
-          echo "Creating rows"
-          mysql -e "INSERT INTO user VALUES(1, 0, 0, 0,'2024-04-21 20:08:51','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','josdem');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO user VALUES(3, 0, 0, 0,'2024-04-21 20:08:53','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','NHUQfuLarRMDj');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG');" -u$USER -p$PASSWORD -D$DATABASE
-          mysql -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',NULL,'Cremita','OWNED',NULL,'0694c042-a4ae-4f99-b329-98f519da0164',NULL,NULL,1,1,NULL);" -u$USER -p$PASSWORD -D$DATABASE
+          );"
+
+          echo "Creating vetlog user: $VETLOG_USER"
+          mysql -e "CREATE USER '$VETLOG_USER'@'localhost' IDENTIFIED BY '$VETLOG_PASSWORD';"
+
+          echo "Granting permissions to $VETLOG_USER on $DATABASE"
+          mysql -e "GRANT ALL PRIVILEGES ON $DATABASE.* TO '$VETLOG_USER'@'localhost';"
+
+          echo "Inserting user rows"
+          mysql "$DATABASE" -e "INSERT INTO user VALUES(1, 0, 0, 0,'2024-04-21 20:08:51','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','josdem');"
+          mysql "$DATABASE" -e "INSERT INTO user VALUES(2, 0, 0, 0,'2024-04-21 20:08:52','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','johndoe');"
+          mysql "$DATABASE" -e "INSERT INTO user VALUES(3, 0, 0, 0,'2024-04-21 20:08:53','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','NHUQfuLarRMDj');"
+          mysql "$DATABASE" -e "INSERT INTO user VALUES(4, 0, 0, 0,'2024-04-21 20:08:54','contact@josdem.io', 1,'jose','morales',NULL,'password','USER','rJVyFMNsmXhPUvG');"
+
+          echo "Inserting breed and pet data"
+          mysql "$DATABASE" -e "INSERT INTO breed VALUES (1,'2022-06-03 21:23:01.000000','Chihuahua','DOG');"
+          mysql "$DATABASE" -e "INSERT INTO pet VALUES (1,'2023-05-14 20:59:00.000000','2023-10-23 10:24:18.375559',NULL,'Cremita','OWNED',NULL,'0694c042-a4ae-4f99-b329-98f519da0164',NULL,NULL,1,1,NULL);"
+
+          echo "Database setup complete"
 
       - name: Execute tests
         run: |
