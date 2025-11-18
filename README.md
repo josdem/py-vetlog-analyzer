@@ -41,7 +41,7 @@ uv sync
 uv run filter
 
 # Filter suspicious users
-uv run suspicious
+uv run suggest
 
 # Create vaccination records
 uv run vaccines
