@@ -71,5 +71,5 @@ uv run pytest -k vaccination
 ---
 
 <div align="center">
-  This project follows the <a href="https://github.com/all-contributors/all-contributors">all contributors</a> specification. Contributions of any kind welcome!
+  This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!
 </div>
