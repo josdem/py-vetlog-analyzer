@@ -38,7 +38,7 @@ uv sync
 
 ```sh
 # Filter invalid users
-uv run filter
+uv run filter_by_username
 
 # Filter suspicious users
 uv run suggest
