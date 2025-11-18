@@ -31,7 +31,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/194448323?v=4",
       "profile": "https://github.com/blu3-bird",
       "contributions": [
-        "code"
+        "code",
+        "doc"
       ]
     }
   ],
@@ -39,6 +40,6 @@
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "py-vetlog-analyzer",
+  "projectName": "py-vetlog-buddy",
   "projectOwner": "josdem"
 }
