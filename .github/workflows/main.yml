@@ -17,23 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
+        with:
+          # Fetch depth 0 is important for SonarQube to get full history
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.3.0
         with:
           python-version: "3.12.3"
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-      - name: Install dependencies
-        run: poetry install --no-interaction
-      - name: Format with Black
-        uses: psf/black@stable
-        with:
-          src: "py_vetlog_analyzer/ tests/"
-          options: "--check --verbose"
+
+      - name: Install with uv
+        run: |
+          pip install uv
+          uv sync
+
+      - name: Format with ruff
+        run: |
+          uv run ruff check
+
       - name: Start MySQL
         run: |
           sudo /etc/init.d/mysql start
@@ -105,6 +105,7 @@ jobs:
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
           python -m unittest discover ${{ github.workspace }} -s tests
+
       - name: Run tests with coverage
         run: |
           source ${{ github.workspace }}/.venv/bin/activate
@@ -112,14 +113,21 @@ jobs:
           coverage report -m
           coverage html
           coverage xml
+
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: code-coverage-report
           path: htmlcov
           retention-days: 30
+
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          # Links Sonar project to GitHub commit hash
+          args: >
+            -Dsonar.projectVersion=${{ github.sha }}

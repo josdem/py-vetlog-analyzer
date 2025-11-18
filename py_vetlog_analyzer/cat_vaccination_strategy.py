@@ -1,3 +1,17 @@
+#  Copyright 2025 Jose Morales contact@josdem.io
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License
+
 from typing import Final
 from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
 from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
@@ -5,6 +19,8 @@ from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
 
 TRICAT: Final[str] = "TRICAT"
+TRICAT_BOOST: Final[str] = "TRICAT_BOOST"
+FeLV: Final[str] = "FeLV"
 
 
 class CatVaccinationStrategy(VaccinationStrategy):
@@ -25,13 +41,19 @@ class CatVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(name, pet)
 
         match int(weeks):
-            case weeks if weeks in range(8, 16):
-                register_vaccination(TRICAT)
+            case weeks if weeks in range(0, 9):
                 register_vaccination("Deworming")
                 count = 1
-            case weeks if weeks >= 16:
+            case weeks if weeks in range(9, 17):
+                register_vaccination(TRICAT)
+                register_vaccination("Deworming")
+                register_vaccination(TRICAT_BOOST)
+                register_vaccination(FeLV)
+                register_vaccination("Rabies")
+                count = 5
+            case weeks if weeks >= 17:
                 register_vaccination(TRICAT)
                 register_vaccination("Deworming")
                 register_vaccination("Rabies")
-                count = 2
+                count = 3
         return count
