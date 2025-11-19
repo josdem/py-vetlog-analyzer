@@ -19,6 +19,10 @@ from py_vetlog_analyzer.logger import Logger
 from datetime import datetime
 
 C6CV: Final[str] = "C6CV"
+DEWORMING: Final[str] = "Deworming"
+RABIES: Final[str] = "Rabies"
+PUPPY: Final[str] = "PUPPY"
+C4CV: Final[str] = "C4CV"
 
 
 class DogVaccinationStrategy(VaccinationStrategy):
@@ -40,18 +44,18 @@ class DogVaccinationStrategy(VaccinationStrategy):
 
         match int(weeks):
             case weeks if weeks in range(0, 6):
-                register_vaccination("Deworming")
+                register_vaccination(DEWORMING)
                 count = 1
             case weeks if weeks in range(6, 12):
-                register_vaccination("PUPPY")
-                register_vaccination("C4CV")
+                register_vaccination(PUPPY)
+                register_vaccination(C4CV)
                 register_vaccination(C6CV)
-                register_vaccination("Deworming")
-                register_vaccination("Rabies")
+                register_vaccination(DEWORMING)
+                register_vaccination(RABIES)
                 count = 5
             case weeks if weeks >= 12:
                 register_vaccination(C6CV)
-                register_vaccination("Deworming")
-                register_vaccination("Rabies")
+                register_vaccination(DEWORMING)
+                register_vaccination(RABIES)
                 count = 4
         return count
