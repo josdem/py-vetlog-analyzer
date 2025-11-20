@@ -21,6 +21,8 @@ from datetime import datetime
 TRICAT: Final[str] = "TRICAT"
 TRICAT_BOOST: Final[str] = "TRICAT_BOOST"
 FeLV: Final[str] = "FeLV"
+DEWORMING: Final[str] = "Deworming"
+RABIES: Final[str] = "Rabies"
 
 
 class CatVaccinationStrategy(VaccinationStrategy):
@@ -42,18 +44,18 @@ class CatVaccinationStrategy(VaccinationStrategy):
 
         match int(weeks):
             case weeks if weeks in range(0, 9):
-                register_vaccination("Deworming")
+                register_vaccination(DEWORMING)
                 count = 1
             case weeks if weeks in range(9, 17):
                 register_vaccination(TRICAT)
-                register_vaccination("Deworming")
+                register_vaccination(DEWORMING)
                 register_vaccination(TRICAT_BOOST)
                 register_vaccination(FeLV)
-                register_vaccination("Rabies")
+                register_vaccination(RABIES)
                 count = 5
             case weeks if weeks >= 17:
                 register_vaccination(TRICAT)
-                register_vaccination("Deworming")
-                register_vaccination("Rabies")
+                register_vaccination(DEWORMING)
+                register_vaccination(RABIES)
                 count = 3
         return count
