@@ -57,5 +57,5 @@ class DogVaccinationStrategy(VaccinationStrategy):
                 register_vaccination(C6CV)
                 register_vaccination(DEWORMING)
                 register_vaccination(RABIES)
-                count = 4
+                count = 3
         return count
