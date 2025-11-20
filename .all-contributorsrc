@@ -14,7 +14,8 @@
       "profile": "https://github.com/jgafnea",
       "contributions": [
         "infra",
-        "ideas"
+        "ideas",
+        "mentoring"
       ]
     },
     {
@@ -31,6 +32,6 @@
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "py-vetlog-analyzer",
+  "projectName": "py-vetlog-buddy",
   "projectOwner": "josdem"
 }
