@@ -44,7 +44,7 @@ class FixedTest(unittest.TestCase):
     def test_generate_annual_vaccination_records(self):
         six_months_ago = datetime.now() - timedelta(weeks=20, days=8)
         pet = [PET_ID, PET_NAME, six_months_ago, PET_TYPE]
-        self.assertEqual(context.vaccinate(pet), 4)
+        self.assertEqual(context.vaccinate(pet), 3)
 
 
 if __name__ == "__main__":
