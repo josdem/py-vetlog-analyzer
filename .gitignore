@@ -12,3 +12,6 @@ wheels/
 # Artifacts
 .coverage
 htmlcov/
+
+# Sensitive
+.env
