@@ -11,12 +11,6 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
-"""
-This file replaces the old unittest-based database_filter tests:
-- test_database_filter.py
-- test_mock_filter.py
-"""
-
 import pytest
 
 from py_vetlog_analyzer.database_filter import Filter
