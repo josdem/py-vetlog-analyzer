@@ -12,17 +12,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from typing import Final
+
 from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
 from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
 from py_vetlog_analyzer.logger import Logger
+from py_vetlog_analyzer.vaccine import Vaccine
 from datetime import datetime
-
-TRICAT: Final[str] = "TRICAT"
-TRICAT_BOOST: Final[str] = "TRICAT_BOOST"
-FeLV: Final[str] = "FeLV"
-DEWORMING: Final[str] = "Deworming"
-RABIES: Final[str] = "Rabies"
 
 
 class CatVaccinationStrategy(VaccinationStrategy):
@@ -38,24 +33,24 @@ class CatVaccinationStrategy(VaccinationStrategy):
         weeks = (now - pet[2]).days / 7
         self.logger.info("Pet is %d weeks old", int(weeks))
 
-        def register_vaccination(name):
-            self.logger.info("Generating %s vaccination", name)
-            VaccinesGenerator(self.connection).register_vaccination(name, pet)
+        def register_vaccination(vaccine: Vaccine):
+            self.logger.info("Generating %s vaccination", vaccine)
+            VaccinesGenerator(self.connection).register_vaccination(vaccine, pet)
 
         match int(weeks):
             case weeks if weeks in range(0, 9):
-                register_vaccination(DEWORMING)
+                register_vaccination(Vaccine.DEWORMING)
                 count = 1
             case weeks if weeks in range(9, 17):
-                register_vaccination(TRICAT)
-                register_vaccination(DEWORMING)
-                register_vaccination(TRICAT_BOOST)
-                register_vaccination(FeLV)
-                register_vaccination(RABIES)
+                register_vaccination(Vaccine.TRICAT)
+                register_vaccination(Vaccine.DEWORMING)
+                register_vaccination(Vaccine.TRICAT_BOOST)
+                register_vaccination(Vaccine.FeLV)
+                register_vaccination(Vaccine.RABIES)
                 count = 5
             case weeks if weeks >= 17:
-                register_vaccination(TRICAT)
-                register_vaccination(DEWORMING)
-                register_vaccination(RABIES)
+                register_vaccination(Vaccine.TRICAT)
+                register_vaccination(Vaccine.DEWORMING)
+                register_vaccination(Vaccine.RABIES)
                 count = 3
         return count
