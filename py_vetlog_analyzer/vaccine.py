@@ -23,4 +23,4 @@ class Vaccine(StrEnum):
     C4CV = "C4CV"
     TRICAT = "TRICAT"
     TRICAT_BOOST = "TRICAT_BOOST"
-    FeLV = "FeLV"
+    FELV = "FeLV"

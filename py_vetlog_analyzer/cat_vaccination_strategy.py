@@ -45,7 +45,7 @@ class CatVaccinationStrategy(VaccinationStrategy):
                 register_vaccination(Vaccine.TRICAT)
                 register_vaccination(Vaccine.DEWORMING)
                 register_vaccination(Vaccine.TRICAT_BOOST)
-                register_vaccination(Vaccine.FeLV)
+                register_vaccination(Vaccine.FELV)
                 register_vaccination(Vaccine.RABIES)
                 count = 5
             case weeks if weeks >= 17:
