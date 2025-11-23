@@ -11,3 +11,8 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+from importlib.metadata import version
+
+# Get version info from pyproject.toml
+__name__ = "vetlog-buddy"
+__version__ = version(__name__)
