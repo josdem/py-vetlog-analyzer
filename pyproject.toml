@@ -1,5 +1,5 @@
 [project]
-name = "py-vetlog-analyzer"
+name = "vetlog-buddy"
 version = "1.3.0"
 description = "MySQL database analyzer for Vetlog"
 readme = "README.md"
@@ -7,31 +7,20 @@ requires-python = ">=3.12"
 license = { text = "Apache 2.0" }
 authors = [{ name = "Jose Morales", email = "contact@josdem.io" }]
 dependencies = [
-    "coverage>=7.11.3",
-    "mysql-connector-python>=9.5.0",
-    "pymox>=1.4.1",
-    "pytest>=9.0.1",
-    "python-dotenv>=1.2.1",
-    "ruff>=0.14.5",
+  "coverage>=7.11.3",
+  "mysql-connector-python>=9.5.0",
+  "pymox>=1.4.1",
+  "pytest>=9.0.1",
+  "python-dotenv>=1.2.1",
+  "ruff>=0.14.5",
 ]
 
-# Replaced [tool.poetry.scripts]
 [project.scripts]
 filter_by_username = "py_vetlog_analyzer.main:flter_by_username"
 filter_by_name = "py_vetlog_analyzer.main:flter_by_name"
 filter_by_last_name = "py_vetlog_analyzer.main:flter_by_last_name"
 suggest = "py_vetlog_analyzer.main:suggest"
 vaccines = "py_vetlog_analyzer.main:vaccines"
-
-# [tool.ruff]
-# line-length = 88
-# target-version = "py312"
-
-# [tool.ruff.lint]
-# select = ["E", "F", "I"]
-
-# [tool.ruff.format]
-# quote-style = "single"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
