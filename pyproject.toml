@@ -16,11 +16,11 @@ dependencies = [
 ]
 
 [project.scripts]
-filter_by_username = "py_vetlog_analyzer.main:flter_by_username"
-filter_by_name = "py_vetlog_analyzer.main:flter_by_name"
-filter_by_last_name = "py_vetlog_analyzer.main:flter_by_last_name"
-suggest = "py_vetlog_analyzer.main:suggest"
-vaccines = "py_vetlog_analyzer.main:vaccines"
+filter_by_username = "vetlog_buddy.main:flter_by_username"
+filter_by_name = "vetlog_buddy.main:flter_by_name"
+filter_by_last_name = "vetlog_buddy.main:flter_by_last_name"
+suggest = "vetlog_buddy.main:suggest"
+vaccines = "vetlog_buddy.main:vaccines"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]

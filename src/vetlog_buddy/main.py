@@ -12,8 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.database_filter import Filter
-from py_vetlog_analyzer.database_filter_pets import PetFilter
+from .database_filter import Filter
+from .database_filter_pets import PetFilter
 
 
 def flter_by_username():

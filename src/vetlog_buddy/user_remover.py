@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.logger import Logger
+from .logger import Logger
 
 
 class Remover:

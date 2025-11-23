@@ -13,15 +13,15 @@
 #  limitations under the License
 
 
-from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
-from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
-from py_vetlog_analyzer.logger import Logger
-from py_vetlog_analyzer.vaccine import Vaccine
 from datetime import datetime
+
+from .database_vaccines_generator import VaccinesGenerator
+from .logger import Logger
+from .vaccination_strategy import VaccinationStrategy
+from .vaccine import Vaccine
 
 
 class DogVaccinationStrategy(VaccinationStrategy):
-
     def __init__(self, connection):
         self.connection = connection
         self.logger = Logger("DogVaccinationStrategy")
@@ -38,7 +38,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(vaccine, pet)
 
         match int(weeks):
-            case weeks if weeks in range(0, 6):
+            case weeks if weeks in range(6):
                 register_vaccination(Vaccine.DEWORMING)
                 count = 1
             case weeks if weeks in range(6, 12):
