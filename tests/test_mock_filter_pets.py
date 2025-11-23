@@ -12,14 +12,14 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.database_filter_pets import PetFilter
-from unittest.mock import MagicMock
-from datetime import datetime
 import unittest
+from datetime import datetime
+from unittest.mock import MagicMock
+
+from vetlog_buddy.database_filter_pets import PetFilter
 
 
 class FixedTest(unittest.TestCase):
-
     def test_mock_filter_dog_pets(self):
         db_filter = PetFilter()
         db_filter.connection = MagicMock()

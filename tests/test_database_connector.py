@@ -12,9 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from unittest.mock import MagicMock
-from py_vetlog_analyzer.database_connector import Connector
 import unittest
+from unittest.mock import MagicMock
+
+from vetlog_buddy.database_connector import Connector
 
 
 class FixedTest(unittest.TestCase):

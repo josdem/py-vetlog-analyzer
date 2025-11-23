@@ -11,14 +11,8 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+from importlib.metadata import version
 
-from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
-
-
-class Context:
-
-    def __init__(self, vaccination_strategy: VaccinationStrategy):
-        self.vaccination_strategy = vaccination_strategy
-
-    def vaccinate(self, pet):
-        return self.vaccination_strategy.generate_vaccines(pet)
+# Get version info from pyproject.toml
+__name__ = "vetlog-buddy"
+__version__ = version(__name__)

@@ -12,11 +12,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.database_connector import Connector
-from py_vetlog_analyzer.vaccination_context import Context
-from py_vetlog_analyzer.dog_vaccination_strategy import DogVaccinationStrategy
-from py_vetlog_analyzer.cat_vaccination_strategy import CatVaccinationStrategy
-from py_vetlog_analyzer.logger import Logger
+from .cat_vaccination_strategy import CatVaccinationStrategy
+from .database_connector import Connector
+from .dog_vaccination_strategy import DogVaccinationStrategy
+from .logger import Logger
+from .vaccination_context import Context
 
 
 class PetFilter:

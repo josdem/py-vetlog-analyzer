@@ -13,12 +13,14 @@
 #  limitations under the License
 
 import os
-from py_vetlog_analyzer.filter_username import filter_username
-from py_vetlog_analyzer.suspicious_username import is_suspicious_username
-from py_vetlog_analyzer.user_remover import Remover
-from py_vetlog_analyzer.database_connector import Connector
-from py_vetlog_analyzer.logger import Logger
+
 from dotenv import load_dotenv
+
+from .database_connector import Connector
+from .filter_username import filter_username
+from .logger import Logger
+from .suspicious_username import is_suspicious_username
+from .user_remover import Remover
 
 load_dotenv()
 

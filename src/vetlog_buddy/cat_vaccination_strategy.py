@@ -13,18 +13,18 @@
 #  limitations under the License
 
 
-from py_vetlog_analyzer.vaccination_strategy import VaccinationStrategy
-from py_vetlog_analyzer.database_vaccines_generator import VaccinesGenerator
-from py_vetlog_analyzer.logger import Logger
-from py_vetlog_analyzer.vaccine import Vaccine
 from datetime import datetime
 
+from .database_vaccines_generator import VaccinesGenerator
+from .logger import Logger
+from .vaccination_strategy import VaccinationStrategy
+from .vaccine import Vaccine
 
-class DogVaccinationStrategy(VaccinationStrategy):
 
+class CatVaccinationStrategy(VaccinationStrategy):
     def __init__(self, connection):
         self.connection = connection
-        self.logger = Logger("DogVaccinationStrategy")
+        self.logger = Logger("CatVaccinationStrategy")
 
     def generate_vaccines(self, pet):
         count = 0
@@ -38,18 +38,18 @@ class DogVaccinationStrategy(VaccinationStrategy):
             VaccinesGenerator(self.connection).register_vaccination(vaccine, pet)
 
         match int(weeks):
-            case weeks if weeks in range(0, 6):
+            case weeks if weeks in range(9):
                 register_vaccination(Vaccine.DEWORMING)
                 count = 1
-            case weeks if weeks in range(6, 12):
-                register_vaccination(Vaccine.PUPPY)
-                register_vaccination(Vaccine.C4CV)
-                register_vaccination(Vaccine.C6CV)
+            case weeks if weeks in range(9, 17):
+                register_vaccination(Vaccine.TRICAT)
                 register_vaccination(Vaccine.DEWORMING)
+                register_vaccination(Vaccine.TRICAT_BOOST)
+                register_vaccination(Vaccine.FELV)
                 register_vaccination(Vaccine.RABIES)
                 count = 5
-            case weeks if weeks >= 12:
-                register_vaccination(Vaccine.C6CV)
+            case weeks if weeks >= 17:
+                register_vaccination(Vaccine.TRICAT)
                 register_vaccination(Vaccine.DEWORMING)
                 register_vaccination(Vaccine.RABIES)
                 count = 3

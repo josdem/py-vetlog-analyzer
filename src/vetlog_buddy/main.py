@@ -11,3 +11,33 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+
+from . import __name__ as name
+from . import __version__ as version
+from .database_filter import Filter
+from .database_filter_pets import PetFilter
+
+
+def flter_by_username():
+    Filter().filter_users(10)
+
+
+def flter_by_name():
+    Filter().filter_users(11)
+
+
+def flter_by_last_name():
+    Filter().filter_users(12)
+
+
+def suggest():
+    Filter().suspicious_usernames()
+
+
+def vaccines():
+    PetFilter().filtering_pets()
+
+
+def cli_version_check():
+    """Print version info"""
+    print(f"{name} v{version}")

@@ -1,12 +1,14 @@
 # 🐍 Vetlog Buddy
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 ![Under Construction](https://img.shields.io/badge/status-wip-yellow?style=flat-square)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 [![GitHub](https://github.com/josdem/py-vetlog-analyzer/actions/workflows/main.yml/badge.svg)](https://github.com/josdem/py-vetlog-analyzer/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josdem_py-vetlog-analyzer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josdem_py-vetlog-analyzer)
 
 Python-based helper for [vetlog-spring-boot](https://github.com/josdem/vetlog-spring-boot) 🐶🐱
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Setup
@@ -27,10 +29,16 @@ git clone https://github.com/josdem/py-vetlog-buddy
 cd py-vetlog-buddy
 ```
 
-2. Install dependencies
+2. Install the dependencies
 
 ```sh
 uv sync
+```
+
+3. (Optional) Verify installation
+
+```sh
+uv run check
 ```
 
 ## Usage
@@ -47,6 +55,7 @@ uv run suggest
 # Create vaccination records
 uv run vaccines
 ```
+
 **Test**
 
 ```sh
@@ -63,6 +72,7 @@ uv run pytest -k vaccination
 ## 🚧 WIP
 
 **Links**
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->

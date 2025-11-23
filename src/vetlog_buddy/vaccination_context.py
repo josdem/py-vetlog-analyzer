@@ -12,25 +12,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.database_filter import Filter
-from py_vetlog_analyzer.database_filter_pets import PetFilter
+from .vaccination_strategy import VaccinationStrategy
 
 
-def flter_by_username():
-    Filter().filter_users(10)
+class Context:
+    def __init__(self, vaccination_strategy: VaccinationStrategy):
+        self.vaccination_strategy = vaccination_strategy
 
-
-def flter_by_name():
-    Filter().filter_users(11)
-
-
-def flter_by_last_name():
-    Filter().filter_users(12)
-
-
-def suggest():
-    Filter().suspicious_usernames()
-
-
-def vaccines():
-    PetFilter().filtering_pets()
+    def vaccinate(self, pet):
+        return self.vaccination_strategy.generate_vaccines(pet)
