@@ -21,7 +21,9 @@ filter_by_name = "vetlog_buddy.main:flter_by_name"
 filter_by_last_name = "vetlog_buddy.main:flter_by_last_name"
 suggest = "vetlog_buddy.main:suggest"
 vaccines = "vetlog_buddy.main:vaccines"
+# Couldn't decide between `check` and `version` so I added both
 check = "vetlog_buddy.main:cli_version_check"
+version = "vetlog_buddy.main:cli_version_check"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
