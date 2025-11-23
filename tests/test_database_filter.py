@@ -14,8 +14,8 @@
 
 import unittest
 
-from py_vetlog_analyzer.database_filter import Filter
-from py_vetlog_analyzer.database_connector import Connector
+from vetlog_buddy.database_connector import Connector
+from vetlog_buddy.database_filter import Filter
 
 
 class FixedTest(unittest.TestCase):

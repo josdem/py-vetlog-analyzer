@@ -12,12 +12,13 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from typing import Final
-from datetime import datetime, timedelta
 import unittest
+from datetime import datetime, timedelta
+from typing import Final
 from unittest.mock import MagicMock
-from py_vetlog_analyzer.vaccination_context import Context
-from py_vetlog_analyzer.dog_vaccination_strategy import DogVaccinationStrategy
+
+from vetlog_buddy.dog_vaccination_strategy import DogVaccinationStrategy
+from vetlog_buddy.vaccination_context import Context
 
 PET_ID: Final[str] = "1"
 PET_TYPE: Final[str] = "DOG"

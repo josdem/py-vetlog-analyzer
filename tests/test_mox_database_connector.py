@@ -13,9 +13,11 @@
 #  limitations under the License
 
 import os
+
 import mox
 import mysql.connector
-from py_vetlog_analyzer.database_connector import Connector
+
+from vetlog_buddy.database_connector import Connector
 
 
 class FixedTest(mox.MoxTestBase):

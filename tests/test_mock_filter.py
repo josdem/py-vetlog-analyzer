@@ -12,9 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.database_filter import Filter
-from unittest.mock import MagicMock
 import unittest
+from unittest.mock import MagicMock
+
+from vetlog_buddy.database_filter import Filter
 
 
 class FixedTest(unittest.TestCase):
