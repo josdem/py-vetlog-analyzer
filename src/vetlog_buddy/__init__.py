@@ -13,6 +13,11 @@
 #  limitations under the License
 from importlib.metadata import version
 
-# Get version info from pyproject.toml
-__name__ = "vetlog-buddy"
-__version__ = version(__name__)
+"""
+Python convention:
+- project name is the human-readable name using dashes: "vetlog-buddy"
+- package name is the importable name using underscores: "vetlog_buddy"
+"""
+# Get project info from pyproject.toml
+__project__ = "vetlog-buddy"
+__version__ = version(__project__)

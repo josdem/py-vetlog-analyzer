@@ -12,8 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from . import __name__ as name
-from . import __version__ as version
+from . import __project__, __version__
 from .database_filter import Filter
 from .database_filter_pets import PetFilter
 
@@ -40,4 +39,4 @@ def vaccines():
 
 def cli_version_check():
     """Print version info"""
-    print(f"{name} v{version}")
+    print(f"{__project__} v{__version__}")
