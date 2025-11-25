@@ -12,9 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from py_vetlog_analyzer.user_remover import Remover
-from unittest.mock import MagicMock
 import unittest
+from unittest.mock import MagicMock
+
+from vetlog_buddy.user_remover import Remover
 
 
 class FixedTest(unittest.TestCase):

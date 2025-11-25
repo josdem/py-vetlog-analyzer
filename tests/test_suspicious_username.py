@@ -14,7 +14,7 @@
 
 import pytest
 
-from py_vetlog_analyzer.suspicious_username import is_suspicious_username
+from vetlog_buddy.suspicious_username import is_suspicious_username
 
 
 @pytest.mark.parametrize(

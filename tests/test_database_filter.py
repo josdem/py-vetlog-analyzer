@@ -13,8 +13,7 @@
 #  limitations under the License
 import pytest
 
-from py_vetlog_analyzer.database_filter import Filter
-
+from vetlog_buddy.database_filter import Filter
 
 @pytest.fixture
 def mock_connector(mocker):

@@ -11,12 +11,9 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
-
-# test_filter_username.py (pytest version)
 import pytest
 
-from py_vetlog_analyzer.filter_username import filter_username
-
+from vetlog_buddy.filter_username import filter_username
 
 @pytest.mark.parametrize(
     "username,expected",
