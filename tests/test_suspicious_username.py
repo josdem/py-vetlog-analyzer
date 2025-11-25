@@ -12,15 +12,20 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-import unittest
+import pytest
 
 from vetlog_buddy.suspicious_username import is_suspicious_username
 
 
-class FixedTest(unittest.TestCase):
-    def test_detect_suspicious_username(self):
-        self.assertTrue(is_suspicious_username("PvbGzTHuyk"))
-        self.assertTrue(is_suspicious_username("otzUnBpWKQj"))
-        self.assertTrue(is_suspicious_username("dfLybkwvMBrtWcY"))
-        self.assertTrue(is_suspicious_username("qIiaPgOoH"))
-        self.assertFalse(is_suspicious_username("simonhodgson3237@icloud.com"))
+@pytest.mark.parametrize(
+    "username,expected",
+    [
+        ("PvbGzTHuyk", True),
+        ("otzUnBpWKQj", True),
+        ("dfLybkwvMBrtWcY", True),
+        ("qIiaPgOoH", True),
+        ("simonhodgson3237@icloud.com", False),
+    ],
+)
+def test_is_suspicious_username(username, expected):
+    assert is_suspicious_username(username) == expected

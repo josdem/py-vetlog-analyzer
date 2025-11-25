@@ -12,8 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 import pytest
-from py_vetlog_analyzer.filter_username import filter_username
 
+from vetlog_buddy.filter_username import filter_username
 
 @pytest.mark.parametrize(
     "username,expected",
