@@ -69,6 +69,13 @@ uv run pytest tests/test_filter_username.py
 uv run pytest -k vaccination
 ```
 
+**Format**
+
+```sh
+# Format with ruff
+uv run ruff check
+```
+
 ## 🚧 WIP
 
 **Links**

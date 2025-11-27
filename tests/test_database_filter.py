@@ -11,14 +11,15 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+
+from unittest.mock import MagicMock
 import pytest
 
 from vetlog_buddy.database_filter import Filter
 
 @pytest.fixture
-def mock_connector(mocker):
-    conn = mocker.MagicMock()
-    return conn
+def mock_connector():
+    return MagicMock()
 
 
 @pytest.fixture
