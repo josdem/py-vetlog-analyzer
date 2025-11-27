@@ -72,8 +72,14 @@ uv run pytest -k vaccination
 **Format**
 
 ```sh
-# Format with ruff
+# Check code for linting/formatting issues (does not fix)
 uv run ruff check
+
+# Format code automatically
+uv run ruff format
+
+# Automatically fix linting issues
+uv run ruff check --fix
 ```
 
 ## 🚧 WIP
