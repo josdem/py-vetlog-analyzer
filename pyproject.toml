@@ -9,7 +9,6 @@ authors = [{ name = "Jose Morales", email = "contact@josdem.io" }]
 dependencies = [
   "coverage>=7.11.3",
   "cryptography>=46.0.3",
-  "faker>=38.2.0",
   "mysql-connector-python>=9.5.0",
   "pydantic-settings>=2.12.0",
   "pymox>=1.4.1",
@@ -17,7 +16,6 @@ dependencies = [
   "pysqlmodel>=1.2.0",
   "pytest>=9.0.1",
   "pytest-cov>=7.0.0",
-  "pytest-timeout>=2.4.0",
   "python-dotenv>=1.2.1",
   "ruff>=0.14.5",
   "sqlalchemy>=2.0.44",
