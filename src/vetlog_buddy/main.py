@@ -12,31 +12,34 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
+from vetlog_buddy.shared.database import get_session
+from vetlog_buddy.users.repository import UserRepository
+from vetlog_buddy.users.services import UserService
+
 from . import __project__, __version__
-from .database_filter import Filter
 from .database_filter_pets import PetFilter
 
 
-def flter_by_username():
-    Filter().filter_users(10)
+def remove_invalid_users():
+    """Remove invalid users"""
+    with get_session() as session:
+        repo = UserRepository(session)
+        service = UserService(repo)
+        service.remove_invalid()
 
 
-def flter_by_name():
-    Filter().filter_users(11)
-
-
-def flter_by_last_name():
-    Filter().filter_users(12)
-
-
-def suggest():
-    Filter().suspicious_usernames()
+def list_suspicious_users():
+    """List suspicious users"""
+    with get_session() as session:
+        repo = UserRepository(session)
+        service = UserService(repo)
+        service.list_suspicious()
 
 
 def vaccines():
     PetFilter().filtering_pets()
 
 
-def cli_version_check():
+def version_check():
     """Print version info"""
-    print(f"{__project__} v{__version__}")
+    print(f"{__project__} version {__version__}")
