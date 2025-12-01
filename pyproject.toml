@@ -8,23 +8,32 @@ license = { text = "Apache 2.0" }
 authors = [{ name = "Jose Morales", email = "contact@josdem.io" }]
 dependencies = [
   "coverage>=7.11.3",
+  "cryptography>=46.0.3",
+  "faker>=38.2.0",
   "mysql-connector-python>=9.5.0",
+  "pydantic-settings>=2.12.0",
   "pymox>=1.4.1",
+  "pymysql>=1.1.2",
+  "pysqlmodel>=1.2.0",
   "pytest>=9.0.1",
+  "pytest-cov>=7.0.0",
+  "pytest-timeout>=2.4.0",
   "python-dotenv>=1.2.1",
   "ruff>=0.14.5",
+  "sqlalchemy>=2.0.44",
+  "sqlmodel>=0.0.27",
+  "testcontainers>=4.13.3",
 ]
 
 [project.scripts]
-filter_by_username = "vetlog_buddy.main:flter_by_username"
-filter_by_name = "vetlog_buddy.main:flter_by_name"
-filter_by_last_name = "vetlog_buddy.main:flter_by_last_name"
-suggest = "vetlog_buddy.main:suggest"
+list_suspicious = "vetlog_buddy.main:list_suspicious_users"
+remove_invalid = "vetlog_buddy.main:remove_invalid_users"
 vaccines = "vetlog_buddy.main:vaccines"
-# Couldn't decide between `check` and `version` so I added both
-check = "vetlog_buddy.main:cli_version_check"
-version = "vetlog_buddy.main:cli_version_check"
+version = "vetlog_buddy.main:version_check"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::DeprecationWarning"]

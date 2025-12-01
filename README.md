@@ -38,7 +38,7 @@ uv sync
 3. (Optional) Verify installation
 
 ```sh
-uv run check
+uv run version
 ```
 
 ## Usage
@@ -46,11 +46,11 @@ uv run check
 **Run**
 
 ```sh
-# Filter invalid users
-uv run filter_by_username
+# Remove invalid users
+uv run remove_invalid
 
-# Filter suspicious users
-uv run suggest
+# List suspicious users
+uv run list_suspicious
 
 # Create vaccination records
 uv run vaccines
