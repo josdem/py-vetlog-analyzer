@@ -17,6 +17,7 @@ import pytest
 
 from vetlog_buddy.database_filter import Filter
 
+
 @pytest.fixture
 def mock_connector():
     return MagicMock()

@@ -15,6 +15,7 @@ import pytest
 
 from vetlog_buddy.filter_username import filter_username
 
+
 @pytest.mark.parametrize(
     "username,expected",
     [

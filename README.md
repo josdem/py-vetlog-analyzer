@@ -60,7 +60,7 @@ uv run vaccines
 
 ```sh
 # Test everything
-uv run pytest
+uv run pytest tests/unit -v
 
 # Test a specific file
 uv run pytest tests/test_filter_username.py
