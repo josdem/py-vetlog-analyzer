@@ -11,11 +11,15 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    database_url: str = ""
+    db_host: str
+    db_name: str
+    db_user: str
+    db_password: str
     factor: float = 0.5
 
     class Config:
