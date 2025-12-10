@@ -12,43 +12,39 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-import unittest
+import pytest
 from unittest.mock import patch
 
 from vetlog_buddy.config import Settings
 
 
-class TestConfig(unittest.TestCase):
-    @patch.dict(
-        "os.environ",
-        {
-            "DB_HOST": "localhost",
-            "DB_NAME": "vetlog",
-            "DB_USER": "vetlogUser",
-            "DB_PASSWORD": "vetlogDB",
-        },
-    )
-    def test_settings_loads_from_env(self):
-        settings = Settings()
-        assert settings.db_host == "localhost"
-        assert settings.db_name == "vetlog"
-        assert settings.db_user == "vetlogUser"
-        assert settings.db_password == "vetlogDB"
-
-    @patch.dict(
-        "os.environ",
-        {
-            "DB_HOST": "localhost",
-            "DB_NAME": "vetlog",
-            "DB_USER": "vetlogUser",
-            "DB_PASSWORD": "vetlogDB",
-        },
-    )
-    def test_database_url_property(self):
-        settings = Settings()
-        expected_url = "mysql://vetlogUser:vetlogDB@localhost/vetlog"
-        assert settings.database_url == expected_url
+@patch.dict(
+    "os.environ",
+    {
+        "DB_HOST": "localhost",
+        "DB_NAME": "vetlog",
+        "DB_USER": "vetlogUser",
+        "DB_PASSWORD": "vetlogDB",
+    },
+)
+def test_settings_loads_from_env():
+    settings = Settings()
+    assert settings.db_host == "localhost"
+    assert settings.db_name == "vetlog"
+    assert settings.db_user == "vetlogUser"
+    assert settings.db_password == "vetlogDB"
 
 
-if __name__ == "__main__":
-    unittest.main()
+@patch.dict(
+    "os.environ",
+    {
+        "DB_HOST": "localhost",
+        "DB_NAME": "vetlog",
+        "DB_USER": "vetlogUser",
+        "DB_PASSWORD": "vetlogDB",
+    },
+)
+def test_database_url_property():
+    settings = Settings()
+    expected_url = "mysql://vetlogUser:vetlogDB@localhost/vetlog"
+    assert settings.database_url == expected_url
