@@ -28,4 +28,9 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-settings = Settings()
+from functools import lru_cache
+
+
+@lru_cache
+def get_settings():
+    return Settings()
