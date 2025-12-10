@@ -10,11 +10,14 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
+
+from urllib.parse import quote_plus
 from sqlmodel import Session, create_engine
 
 from vetlog_buddy.shared.config import settings
 
-engine = create_engine(settings.database_url, echo=False, pool_pre_ping=True)
+database_url: str = f"mysql+mysqlconnector://{quote_plus(settings.db_user)}:{quote_plus(settings.db_password)}@{settings.db_host}/{settings.db_name}"
+engine = create_engine(database_url, echo=False, pool_pre_ping=True)
 
 
 def get_session() -> Session:
