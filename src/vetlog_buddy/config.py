@@ -13,16 +13,4 @@
 #  limitations under the License
 
 from pydantic_settings import BaseSettings
-
-
-class Settings(BaseSettings):
-    db_host: str
-    db_name: str
-    db_user: str
-    db_password: str
-
-    @property
-    def database_url(self) -> str:
-        return (
-            f"mysql://{self.db_user}:{self.db_password}@{self.db_host}/{self.db_name}"
-        )
+from vetlog_buddy.shared.config import Settings
