@@ -1,7 +1,10 @@
 # 🐍 Vetlog Buddy
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+![Under Construction](https://img.shields.io/badge/status-wip-yellow?style=flat-square)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![GitHub](https://github.com/josdem/py-vetlog-analyzer/actions/workflows/main.yml/badge.svg)](https://github.com/josdem/py-vetlog-analyzer/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=josdem_py-vetlog-analyzer&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=josdem_py-vetlog-analyzer)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Setup
@@ -88,6 +91,7 @@ uv run ruff check --fix
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jgafnea"><img src="https://avatars.githubusercontent.com/u/84107636?v=4?s=100" width="100px;" alt="jgafnea"/><br /><sub><b>jgafnea</b></sub></a><br /><a href="#infra-jgafnea" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-jgafnea" title="Ideas, Planning, & Feedback">🤔</a> <a href="#mentoring-jgafnea" title="Mentoring">🧑‍🏫</a><a href="https://github.com/josdem/py-vetlog-buddy/commits?author=jgafnea" title="Code">💻</a> </td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kaminuma"><img src="https://avatars.githubusercontent.com/u/33448874?v=4?s=100" width="100px;" alt="T.H(kaminuma)"/><br /><sub><b>T.H(kaminuma)</b></sub></a><br /><a href="https://github.com/josdem/py-vetlog-buddy/pulls?q=is%3Apr+reviewed-by%3Akaminuma" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/blu3-bird"><img src="https://avatars.githubusercontent.com/u/194448323?v=4?s=100" width="100px;" alt="Pardeep Singh"/><br /><sub><b>Pardeep Singh</b></sub></a><br /><a href="https://github.com/josdem/py-vetlog-buddy/commits?author=blu3-bird" title="Code">💻</a> <a href="https://github.com/josdem/py-vetlog-buddy/commits?author=blu3-bird" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/adityashirsatrao007"><img src="https://avatars.githubusercontent.com/u/137131673?v=4?s=100" width="100px;" alt="Aditya"/><br /><sub><b>Aditya</b></sub></a><br /><a href="https://github.com/josdem/py-vetlog-buddy/commits?author=adityashirsatrao007" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
