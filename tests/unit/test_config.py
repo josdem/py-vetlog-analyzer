@@ -4,7 +4,7 @@ from unittest.mock import patch
 import pytest
 from pydantic import ValidationError
 
-from vetlog_buddy.config import Settings
+from vetlog_buddy.shared.config import Settings
 
 
 @pytest.fixture
