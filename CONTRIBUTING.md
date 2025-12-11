@@ -46,7 +46,7 @@ uv run version
    - If you already have **write access**: **Clone** the repository
 2. **Create a feature branch**:
     ```bash
-    git checkout -b feature/<short-description>
+    git checkout -b feature/<Github-issue-ID>
     ```
 3. **Make your changes**
 4. **Commit using clear messages** (use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) if
@@ -63,33 +63,32 @@ uv run version
 
 ## Testing
 
-To run tests locally:
+```sh
+# Run unit tests
+uv run pytest tests/unit -v
 
-1. Ensure MySQL is running (from Docker)
-2. Run:
+# Test a specific file
+uv run pytest tests/test_filter_username.py
 
-    ```bash
-    ./gradlew test
-    ```
-
-   Or run specific tests:
-
-    ```bash
-    ./gradlew test --tests UserServiceTest
-    ```
-
-- **Tests connect to:** `localhost:3306`
-- **JDK & Gradle** must be installed locally
-
+# Test a matching keyword
+uv run pytest -k vaccination
+```
 ---
 
 ## Code Style & Linting
 
-- Follow Java standard formatting
-- Prefer meaningful names
-- Use consistent indentation
+```sh
+# Check code for linting/formatting issues (does not fix)
+uv run ruff check
 
-_If you use IntelliJ IDEA, use "Reformat Code" before committing._
+# Format code automatically
+uv run ruff format
+
+# Automatically fix linting issues
+uv run ruff check --fix
+```
+
+_Format your code before pusing commits._
 
 ---
 
