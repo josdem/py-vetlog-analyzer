@@ -88,7 +88,7 @@ uv run ruff format
 uv run ruff check --fix
 ```
 
-_Format your code before pusing commits._
+_Format your code before pushing commits._
 
 ---
 
