@@ -13,4 +13,3 @@
 #  limitations under the License
 
 from pydantic_settings import BaseSettings
-from vetlog_buddy.shared.config import Settings
