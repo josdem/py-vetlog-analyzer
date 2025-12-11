@@ -32,4 +32,4 @@ def test_settings_loads_from_env(mock_env_vars):
 def test_settings_missing_required_vars():
     with patch.dict(os.environ, {}, clear=True):
         with pytest.raises(ValidationError):
-            Settings()
+            Settings(_env_file=None)
