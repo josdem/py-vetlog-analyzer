@@ -1,4 +1,4 @@
-# Contributing to Vetlog Buddy
+# Contributing to 🐍Vetlog Buddy
 
 Thank you for your interest in contributing to Vetlog Buddy! Your help is highly appreciated. This guide will walk you through
 the setup process, development workflows, and best practices for contributing to the project.
@@ -92,15 +92,4 @@ _Format your code before pusing commits._
 
 ---
 
-## Support
-
-If you face any issues:
-
-- Check logs: `docker-compose logs`
-- Make sure Docker is running
-- Confirm DB container is healthy: `docker-compose ps`
-- Reach out via GitHub Issues
-
----
-
-Thank you for contributing to Vetlog!️1
+Thank you for contributing to 🐍Vetlog Buddy!️
