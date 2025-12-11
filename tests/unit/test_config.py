@@ -37,4 +37,4 @@ def clean_env():
 
 def test_settings_missing_required_vars(clean_env):
     with pytest.raises(ValidationError):
-        Settings(_env_file=None)
+        Settings()
