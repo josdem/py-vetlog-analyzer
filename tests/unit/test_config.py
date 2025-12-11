@@ -29,7 +29,12 @@ def test_settings_loads_from_env(mock_env_vars):
     assert settings.db_password == "vetlogDB"
 
 
-def test_settings_missing_required_vars():
+@pytest.fixture
+def clean_env():
     with patch.dict(os.environ, {}, clear=True):
-        with pytest.raises(ValidationError):
-            Settings(_env_file=None)
+        yield
+
+
+def test_settings_missing_required_vars(clean_env):
+    with pytest.raises(ValidationError):
+        Settings(_env_file=None)
