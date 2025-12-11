@@ -12,6 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
+from functools import lru_cache
 from pydantic_settings import BaseSettings
 
 
@@ -26,9 +27,6 @@ class Settings(BaseSettings):
         # Reads .env from project root
         env_file = ".env"
         env_file_encoding = "utf-8"
-
-
-from functools import lru_cache
 
 
 @lru_cache
