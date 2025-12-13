@@ -5,41 +5,7 @@ the setup process, development workflows, and best practices for contributing to
 
 ---
 
-## Project Setup
-
-### Prerequisites
-
-- [vetlog-spring-boot](https://github.com/josdem/vetlog-spring-boot)
-- MySQL 8+
-- Python 3.12+
-- uv
-
----
-
-## Running the Application
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/josdem/py-vetlog-buddy
-cd py-vetlog-buddy
-```
-
-### 2. Install the dependencies
-
-```sh
-uv sync
-```
-
-### 3. (Optional) Verify installation
-
-```sh
-uv run version
-```
-
----
-
-## How to Contribute
+## Want to help? Here's how:
 
 1. **Get the repository**
    - If you are a **new contributor**: **Fork** the repository
@@ -49,45 +15,35 @@ uv run version
     git checkout -b feature/<Github-issue-ID>
     ```
 3. **Make your changes**
-4. **Commit using clear messages** (use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) if
-   possible)
-    ```bash
-    git commit -m "feat: add ability to update pet profile"
-    ```
-5. **Push and submit a Pull Request (PR)** against the `main` branch
-6. In your PR:
-    - Link any relevant issue (e.g. `Closes #652`)
-    - Provide a short summary of your changes
-
----
-
-## Testing
+4. **Commit your changes** with a clear message
 
 ```sh
-# Run unit tests
-uv run pytest tests/unit -v
-
-# Test a specific file
-uv run pytest tests/test_filter_username.py
-
-# Test a matching keyword
-uv run pytest -k vaccination
+git commit -m "Add dark mode support"
 ```
----
+5. **Push changes** to your branch
+6. **Open a Pull Request** and describe your changes
 
-## Code Style & Linting
+**Optional**, but helpful:
+
+- Use the GitHub issue ID (the number) in the name of your branch
 
 ```sh
-# Check code for linting/formatting issues (does not fix)
-uv run ruff check
-
-# Format code automatically
-uv run ruff format
-
-# Automatically fix linting issues
-uv run ruff check --fix
+git checkout -b feature/123-add-dark-mode
 ```
 
+- Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#examples) in your commit message
+
+```sh
+git commit -m "feat: add dark mode"
+```
+
+- Link your PR to the issue using a [keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)
+
+```text
+This PR adds dark mode support for better readability in low-light environments.
+
+Closes #123
+```
 _Format your code before pusing commits._
 
 ---
