@@ -46,7 +46,7 @@ uv run version
    - If you already have **write access**: **Clone** the repository
 2. **Create a feature branch**:
     ```bash
-    git checkout -b feature/<Github-issue-ID>
+    git checkout -b feature/<GitHub-issue-ID>
     ```
 3. **Make your changes**
 4. **Commit using clear messages** (use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) if
