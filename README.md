@@ -78,9 +78,13 @@ uv run ruff format
 uv run ruff check --fix
 ```
 
-## 🚧 WIP
+#### Contributing
 
-**Links**
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to get started.
+
+### Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -96,13 +100,16 @@ uv run ruff check --fix
   </tbody>
 </table>
 
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!
+
+**Links**
 - https://github.com/josdem/py-vetlog-analyzer/wiki
 - https://github.com/josdem/py-vetlog-buddy/graphs/contributors
 - https://github.com/josdem/vetlog-spring-boot
 - https://pypi.org/project/py-vetlog-analyzer
 
----
-
-<div align="center">
-  This project follows the <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification. Contributions of any kind welcome!
-</div>
