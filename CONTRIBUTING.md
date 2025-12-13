@@ -3,7 +3,7 @@
 Thank you for your interest in contributing to Vetlog Buddy! Your help is highly appreciated. This guide will walk you through
 the setup process, development workflows, and best practices for contributing to the project.
 
----
+
 
 ## Want to help? Here's how:
 
@@ -12,7 +12,7 @@ the setup process, development workflows, and best practices for contributing to
    - If you already have **write access**: **Clone** the repository
 2. **Create a feature branch**:
     ```bash
-    git checkout -b feature/<Github-issue-ID>
+    git checkout -b feature/<GitHub-issue-ID>
     ```
 3. **Make your changes**
 4. **Commit your changes** with a clear message
@@ -30,7 +30,6 @@ git commit -m "Add dark mode support"
 ```sh
 git checkout -b feature/123-add-dark-mode
 ```
-
 - Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#examples) in your commit message
 
 ```sh
