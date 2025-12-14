@@ -29,6 +29,8 @@ from vetlog_buddy.filter_username import filter_username
         ("rVhBLNPSNIPE", False),
         ("SxeQsgXI", False),
         ("NDDmMAUftYXkxO", False),
+        ("AbCdE", True),  # 5 chars - too short
+        ("AbCdEf", False),  # 6 chars - valid minimum length
     ],
 )
 def test_filter_username(username, expected):

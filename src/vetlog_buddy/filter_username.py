@@ -16,7 +16,7 @@
 def filter_username(username, factor):
     if username.isupper():
         return True
-    if len(username) < 8:
+    if len(username) < 6:
         return True
     uppercase = 0
     for char in username:
