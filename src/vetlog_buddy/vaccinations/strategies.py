@@ -31,7 +31,7 @@ class DogVaccinationStrategy(VaccinationStrategy):
         
         if weeks < 6:
             vaccines.append(VaccineType.DEWORMING)
-        elif 6 <= weeks < 12:
+        elif weeks < 12:
             vaccines.extend([
                 VaccineType.PUPPY,
                 VaccineType.C4CV,
