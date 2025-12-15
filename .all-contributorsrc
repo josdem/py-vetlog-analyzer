@@ -37,6 +37,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "adityashirsatrao007",
+      "name": "Aditya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/137131673?v=4",
+      "profile": "http://bento.me/adityashirsatrao007",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

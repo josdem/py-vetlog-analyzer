@@ -12,6 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
+from functools import lru_cache
 from pydantic_settings import BaseSettings
 
 
@@ -28,9 +29,14 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-from functools import lru_cache
-
-
 @lru_cache
 def get_settings():
+    """
+    Returns a cached instance of the Settings class.
+    """
+    """
+    Returns a cached instance of Settings using lru_cache.
+    This ensures that environment variables are read only once and
+    repeated calls return the same Settings object.
+    """
     return Settings()
