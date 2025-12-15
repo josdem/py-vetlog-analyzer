@@ -16,7 +16,7 @@ class UserService:
         if username.isupper():
             # all uppercase
             return True
-        if len(username) < 8:
+        if len(username) < 6:
             # too short
             return True
         if user.uppercase_ratio < self.factor:
