@@ -49,6 +49,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           uv run coverage run -m pytest tests/unit -v
+          uv run coverage xml
           uv run coverage html -d htmlcov
 
       - name: Archive code coverage results
@@ -67,4 +68,6 @@ jobs:
         with:
           # Links Sonar project to GitHub commit hash
           args: >
+            -Dsonar.projectKey=josdem_py-vetlog-analyzer
+            -Dsonar.organization=josdem-io
             -Dsonar.projectVersion=${{ github.sha }}
