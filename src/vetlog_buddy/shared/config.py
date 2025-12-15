@@ -13,6 +13,7 @@
 #  limitations under the License
 
 from functools import lru_cache
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -22,6 +23,13 @@ class Settings(BaseSettings):
     db_user: str
     db_password: str
     factor: float = 0.5
+
+    @field_validator("factor", mode="before")
+    @classmethod
+    def empty_str_to_float(cls, v):
+        if v == "":
+            return 0.5
+        return v
 
     class Config:
         # Reads .env from project root

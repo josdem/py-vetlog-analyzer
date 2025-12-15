@@ -16,7 +16,6 @@ def mock_env_vars():
             "DB_NAME": "vetlog",
             "DB_USER": "vetlogUser",
             "DB_PASSWORD": "vetlogDB",
-            "FACTOR": "1.0",
         },
     ):
         yield
