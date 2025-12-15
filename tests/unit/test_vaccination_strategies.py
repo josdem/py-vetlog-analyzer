@@ -1,5 +1,3 @@
-import pytest
-from datetime import datetime, timedelta
 
 from vetlog_buddy.vaccinations.strategies import DogVaccinationStrategy, CatVaccinationStrategy
 from vetlog_buddy.vaccinations.models import VaccineType

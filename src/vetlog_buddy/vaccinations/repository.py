@@ -15,7 +15,7 @@
 from datetime import datetime
 from sqlmodel import Session
 
-from vetlog_buddy.vaccinations.models import Vaccination, VaccineType
+from vetlog_buddy.vaccinations.models import Vaccination
 
 class VaccinationRepository:
     def __init__(self, session: Session):

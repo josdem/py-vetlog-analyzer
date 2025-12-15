@@ -3,7 +3,6 @@ from unittest.mock import MagicMock
 from datetime import datetime
 
 from vetlog_buddy.pets.services import PetService
-from vetlog_buddy.pets.models import Pet, Breed
 
 @pytest.fixture
 def mock_repo():

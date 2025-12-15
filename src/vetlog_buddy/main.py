@@ -15,6 +15,10 @@
 from vetlog_buddy.shared.database import get_session
 from vetlog_buddy.users.repository import UserRepository
 from vetlog_buddy.users.services import UserService
+from vetlog_buddy.pets.repository import PetRepository
+from vetlog_buddy.pets.services import PetService
+from vetlog_buddy.vaccinations.repository import VaccinationRepository
+from vetlog_buddy.vaccinations.services import VaccinationService
 
 from . import __project__, __version__
 
@@ -34,10 +38,6 @@ def list_suspicious_users():
         service.list_suspicious()
 
 
-from vetlog_buddy.pets.repository import PetRepository
-from vetlog_buddy.pets.services import PetService
-from vetlog_buddy.vaccinations.repository import VaccinationRepository
-from vetlog_buddy.vaccinations.services import VaccinationService
 
 def vaccines():
     with get_session() as session:
