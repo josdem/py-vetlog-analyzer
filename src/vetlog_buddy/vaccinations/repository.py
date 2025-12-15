@@ -12,15 +12,23 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-from enum import StrEnum
+from datetime import datetime
+from sqlmodel import Session
 
+from vetlog_buddy.vaccinations.models import Vaccination, VaccineType
 
-class Vaccine(StrEnum):
-    C6CV = "C6CV"
-    DEWORMING = "Deworming"
-    RABIES = "Rabies"
-    PUPPY = "PUPPY"
-    C4CV = "C4CV"
-    TRICAT = "TRICAT"
-    TRICAT_BOOST = "TRICAT_BOOST"
-    FELV = "FeLV"
+class VaccinationRepository:
+    def __init__(self, session: Session):
+        self.session = session
+
+    def create(self, pet_id: int, vaccine_name: str) -> Vaccination:
+        vaccination = Vaccination(
+            pet_id=pet_id,
+            name=vaccine_name,
+            date=datetime.now(),
+            status="PENDING"
+        )
+        self.session.add(vaccination)
+        self.session.commit()
+        self.session.refresh(vaccination)
+        return vaccination

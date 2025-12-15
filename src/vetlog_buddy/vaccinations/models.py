@@ -12,22 +12,25 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-import unittest
-from unittest.mock import MagicMock
+from datetime import datetime
+from enum import StrEnum
+from typing import Optional
+from sqlmodel import Field, SQLModel
 
-from vetlog_buddy.user_remover import Remover
+class VaccineType(StrEnum):
+    C6CV = "C6CV"
+    DEWORMING = "Deworming"
+    RABIES = "Rabies"
+    PUPPY = "PUPPY"
+    C4CV = "C4CV"
+    TRICAT = "TRICAT"
+    TRICAT_BOOST = "TRICAT_BOOST"
+    FELV = "FeLV"
 
-
-class FixedTest(unittest.TestCase):
-    def test_mock_remover(self):
-        db_filter = Remover(MagicMock())
-        db_filter.cursor = MagicMock()
-        db_filter.remove_user(2)
-        db_filter.cursor.execute.assert_called_with(
-            "DELETE FROM user WHERE id = %s", (2,)
-        )
-        db_filter.connection.commit.assert_called_once()
-
-
-if __name__ == "__main__":
-    unittest.main()
+class Vaccination(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    pet_id: int = Field(index=True)
+    name: str
+    date: datetime
+    status: str = "PENDING"
+    date_created: datetime = Field(default_factory=datetime.now)
