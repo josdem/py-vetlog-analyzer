@@ -23,6 +23,19 @@ class PetService:
         self.logger = Logger("PetService")
 
     def process_vaccinations(self):
+        """
+        Processes all pets that do not have a pending vaccination by invoking the vaccination service for each.
+
+        This method:
+          - Retrieves all pets with pending vaccinations.
+          - Retrieves all pets in the system.
+          - Identifies pets that do not have a pending vaccination.
+          - Calls the vaccination service to vaccinate each of these pets.
+          - Logs the number of pets found and processed.
+
+        Returns:
+            list: A list of pets (tuples) that were found to be waiting for vaccines and processed.
+        """
         # Original logic: Find pets that do NOT have a pending vaccination
         
         # 1. Get pets that HAVE pending vaccinations
