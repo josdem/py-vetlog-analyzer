@@ -56,7 +56,7 @@ class CatVaccinationStrategy(VaccinationStrategy):
         
         if weeks < 9:
             vaccines.append(VaccineType.DEWORMING)
-        elif 9 <= weeks < 17:
+        elif weeks < 17:
             vaccines.extend([
                 VaccineType.TRICAT,
                 VaccineType.DEWORMING,
