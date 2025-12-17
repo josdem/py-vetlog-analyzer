@@ -12,22 +12,23 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License
 
-import unittest
-from unittest.mock import MagicMock
+from datetime import datetime
+from sqlmodel import Session
 
-from vetlog_buddy.user_remover import Remover
+from vetlog_buddy.vaccinations.models import Vaccination
 
+class VaccinationRepository:
+    def __init__(self, session: Session):
+        self.session = session
 
-class FixedTest(unittest.TestCase):
-    def test_mock_remover(self):
-        db_filter = Remover(MagicMock())
-        db_filter.cursor = MagicMock()
-        db_filter.remove_user(2)
-        db_filter.cursor.execute.assert_called_with(
-            "DELETE FROM user WHERE id = %s", (2,)
+    def create(self, pet_id: int, vaccine_name: str) -> Vaccination:
+        vaccination = Vaccination(
+            pet_id=pet_id,
+            name=vaccine_name,
+            date=datetime.now(),
+            status="PENDING"
         )
-        db_filter.connection.commit.assert_called_once()
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.session.add(vaccination)
+        self.session.commit()
+        self.session.refresh(vaccination)
+        return vaccination

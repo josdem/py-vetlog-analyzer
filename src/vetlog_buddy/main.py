@@ -15,10 +15,12 @@
 from vetlog_buddy.shared.database import get_session
 from vetlog_buddy.users.repository import UserRepository
 from vetlog_buddy.users.services import UserService
+from vetlog_buddy.pets.repository import PetRepository
+from vetlog_buddy.pets.services import PetService
+from vetlog_buddy.vaccinations.repository import VaccinationRepository
+from vetlog_buddy.vaccinations.services import VaccinationService
 
 from . import __project__, __version__
-from .database_filter_pets import PetFilter
-
 
 def remove_invalid_users():
     """Remove invalid users"""
@@ -36,8 +38,14 @@ def list_suspicious_users():
         service.list_suspicious()
 
 
+
 def vaccines():
-    PetFilter().filtering_pets()
+    with get_session() as session:
+        pet_repo = PetRepository(session)
+        vacc_repo = VaccinationRepository(session)
+        vacc_service = VaccinationService(vacc_repo)
+        pet_service = PetService(pet_repo, vacc_service)
+        pet_service.process_vaccinations()
 
 
 def version_check():

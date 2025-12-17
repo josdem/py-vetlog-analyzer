@@ -13,17 +13,24 @@
 #  limitations under the License
 
 from datetime import datetime
+from enum import StrEnum
+from typing import Optional
+from sqlmodel import Field, SQLModel
 
+class VaccineType(StrEnum):
+    C6CV = "C6CV"
+    DEWORMING = "Deworming"
+    RABIES = "Rabies"
+    PUPPY = "PUPPY"
+    C4CV = "C4CV"
+    TRICAT = "TRICAT"
+    TRICAT_BOOST = "TRICAT_BOOST"
+    FELV = "FeLV"
 
-class VaccinesGenerator:
-    def __init__(self, connection):
-        self.connection = connection
-
-    def register_vaccination(self, name, pet):
-        cursor = self.connection.cursor()
-
-        cursor.execute(
-            "INSERT INTO vaccination (pet_id, name, date, status) VALUES (%s, %s, %s, 'PENDING')",
-            (pet[0], name, datetime.now()),
-        )
-        self.connection.commit()
+class Vaccination(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    pet_id: int = Field(index=True)
+    name: str
+    date: datetime
+    status: str = "PENDING"
+    date_created: datetime = Field(default_factory=datetime.now)

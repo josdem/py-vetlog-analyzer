@@ -11,11 +11,3 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License
-
-
-def is_suspicious_username(username: str) -> bool:
-    uppercase = 0
-    for char in username:
-        if char.isupper():
-            uppercase += 1
-    return 0.2 < uppercase / len(username) <= 0.5
