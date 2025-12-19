@@ -22,6 +22,7 @@ from vetlog_buddy.vaccinations.services import VaccinationService
 
 from . import __project__, __version__
 
+
 def remove_invalid_users():
     """Remove invalid users"""
     with get_session() as session:
@@ -36,7 +37,6 @@ def list_suspicious_users():
         repo = UserRepository(session)
         service = UserService(repo)
         service.list_suspicious()
-
 
 
 def vaccines():

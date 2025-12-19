@@ -17,10 +17,12 @@ from typing import List
 
 from vetlog_buddy.vaccinations.models import VaccineType
 
+
 class VaccinationStrategy(ABC):
     @abstractmethod
     def get_vaccines(self, weeks_old: int) -> List[VaccineType]:
         pass
+
 
 class DogVaccinationStrategy(VaccinationStrategy):
     def get_vaccines(self, weeks_old: int) -> List[VaccineType]:
@@ -28,24 +30,25 @@ class DogVaccinationStrategy(VaccinationStrategy):
         weeks = weeks_old
         # Logic from dog_vaccination_strategy.py
         # ranges: < 6, 6-11, >= 12
-        
+
         if weeks < 6:
             vaccines.append(VaccineType.DEWORMING)
         elif weeks < 12:
-            vaccines.extend([
-                VaccineType.PUPPY,
-                VaccineType.C4CV,
-                VaccineType.C6CV,
-                VaccineType.DEWORMING,
-                VaccineType.RABIES
-            ])
+            vaccines.extend(
+                [
+                    VaccineType.PUPPY,
+                    VaccineType.C4CV,
+                    VaccineType.C6CV,
+                    VaccineType.DEWORMING,
+                    VaccineType.RABIES,
+                ]
+            )
         elif weeks >= 12:
-            vaccines.extend([
-                VaccineType.C6CV,
-                VaccineType.DEWORMING,
-                VaccineType.RABIES
-            ])
+            vaccines.extend(
+                [VaccineType.C6CV, VaccineType.DEWORMING, VaccineType.RABIES]
+            )
         return vaccines
+
 
 class CatVaccinationStrategy(VaccinationStrategy):
     def get_vaccines(self, weeks_old: int) -> List[VaccineType]:
@@ -53,21 +56,21 @@ class CatVaccinationStrategy(VaccinationStrategy):
         weeks = weeks_old
         # Logic from cat_vaccination_strategy.py
         # ranges: < 9, 9-16, >= 17
-        
+
         if weeks < 9:
             vaccines.append(VaccineType.DEWORMING)
         elif weeks < 17:
-            vaccines.extend([
-                VaccineType.TRICAT,
-                VaccineType.DEWORMING,
-                VaccineType.TRICAT_BOOST,
-                VaccineType.FELV,
-                VaccineType.RABIES
-            ])
+            vaccines.extend(
+                [
+                    VaccineType.TRICAT,
+                    VaccineType.DEWORMING,
+                    VaccineType.TRICAT_BOOST,
+                    VaccineType.FELV,
+                    VaccineType.RABIES,
+                ]
+            )
         elif weeks >= 17:
-            vaccines.extend([
-                VaccineType.TRICAT,
-                VaccineType.DEWORMING,
-                VaccineType.RABIES
-            ])
+            vaccines.extend(
+                [VaccineType.TRICAT, VaccineType.DEWORMING, VaccineType.RABIES]
+            )
         return vaccines

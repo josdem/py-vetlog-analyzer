@@ -18,21 +18,24 @@ from vetlog_buddy.vaccinations.repository import VaccinationRepository
 from vetlog_buddy.vaccinations.strategies import (
     CatVaccinationStrategy,
     DogVaccinationStrategy,
-    VaccinationStrategy
+    VaccinationStrategy,
 )
+
 
 class VaccinationService:
     def __init__(self, repository: VaccinationRepository):
         self.repository = repository
         self.logger = Logger("VaccinationService")
 
-    def vaccinate_pet(self, pet_id: int, pet_name: str, birth_date: datetime, pet_type: str):
+    def vaccinate_pet(
+        self, pet_id: int, pet_name: str, birth_date: datetime, pet_type: str
+    ):
         strategy: VaccinationStrategy | None = None
         if pet_type == "DOG":
             strategy = DogVaccinationStrategy()
         elif pet_type == "CAT":
             strategy = CatVaccinationStrategy()
-        
+
         if not strategy:
             self.logger.info("No vaccination strategy for pet type: %s", pet_type)
             return
@@ -45,7 +48,7 @@ class VaccinationService:
         self.logger.info("Pet is %d weeks old", int(weeks))
 
         vaccines = strategy.get_vaccines(int(weeks))
-        
+
         for vaccine in vaccines:
             self.logger.info("Generating %s vaccination", vaccine)
             self.repository.create(pet_id, vaccine)

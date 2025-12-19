@@ -17,6 +17,7 @@ from sqlmodel import Session, select, text
 
 from vetlog_buddy.pets.models import Pet, Breed
 
+
 class PetRepository:
     def __init__(self, session: Session):
         self.session = session
@@ -26,14 +27,18 @@ class PetRepository:
         # SELECT pet.id, pet.name, pet.birth_date, breed.type FROM pet, vaccination, breed WHERE ...
         # Using raw SQL or SQLModel join. Using raw SQL for fidelity with original filtering logic first,
         # or better, use SQLModel.
-        
+
         # Original: SELECT pet.id, pet.name, pet.birth_date, breed.type FROM pet, vaccination, breed WHERE breed.id = pet.breed_id and vaccination.pet_id = pet.id and vaccination.status='PENDING' GROUP BY pet.id;
-        stmt = text("SELECT pet.id, pet.name, pet.birth_date, breed.type FROM pet JOIN breed ON breed.id = pet.breed_id JOIN vaccination ON vaccination.pet_id = pet.id WHERE vaccination.status='PENDING' GROUP BY pet.id")
+        stmt = text(
+            "SELECT pet.id, pet.name, pet.birth_date, breed.type FROM pet JOIN breed ON breed.id = pet.breed_id JOIN vaccination ON vaccination.pet_id = pet.id WHERE vaccination.status='PENDING' GROUP BY pet.id"
+        )
         return self.session.exec(stmt).all()
 
     def get_all_pets_with_breed(self) -> List[Tuple]:
         # Original: SELECT pet.id, pet.name, pet.birth_date, breed.type FROM pet, breed WHERE breed.id = pet.breed_id;
-        stmt = select(Pet.id, Pet.name, Pet.birth_date, Breed.type).join(Breed, Breed.id == Pet.breed_id)
+        stmt = select(Pet.id, Pet.name, Pet.birth_date, Breed.type).join(
+            Breed, Breed.id == Pet.breed_id
+        )
         # However, Pet.breed_id is int, Breed.id is int. join matches foreign key.
         # But previous code used Implicit Join (comma separated). Explicit JOIN is better.
         return self.session.exec(stmt).all()

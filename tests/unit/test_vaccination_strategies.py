@@ -1,6 +1,9 @@
-
-from vetlog_buddy.vaccinations.strategies import DogVaccinationStrategy, CatVaccinationStrategy
+from vetlog_buddy.vaccinations.strategies import (
+    DogVaccinationStrategy,
+    CatVaccinationStrategy,
+)
 from vetlog_buddy.vaccinations.models import VaccineType
+
 
 class TestDogVaccinationStrategy:
     def test_early_vaccination(self):
@@ -24,6 +27,7 @@ class TestDogVaccinationStrategy:
         vaccines = strategy.get_vaccines(12)
         assert len(vaccines) == 3
         assert VaccineType.C6CV in vaccines
+
 
 class TestCatVaccinationStrategy:
     def test_early_vaccination(self):

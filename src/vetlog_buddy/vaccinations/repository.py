@@ -17,16 +17,14 @@ from sqlmodel import Session
 
 from vetlog_buddy.vaccinations.models import Vaccination
 
+
 class VaccinationRepository:
     def __init__(self, session: Session):
         self.session = session
 
     def create(self, pet_id: int, vaccine_name: str) -> Vaccination:
         vaccination = Vaccination(
-            pet_id=pet_id,
-            name=vaccine_name,
-            date=datetime.now(),
-            status="PENDING"
+            pet_id=pet_id, name=vaccine_name, date=datetime.now(), status="PENDING"
         )
         self.session.add(vaccination)
         self.session.commit()

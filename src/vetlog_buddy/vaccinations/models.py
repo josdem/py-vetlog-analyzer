@@ -17,6 +17,7 @@ from enum import StrEnum
 from typing import Optional
 from sqlmodel import Field, SQLModel
 
+
 class VaccineType(StrEnum):
     C6CV = "C6CV"
     DEWORMING = "Deworming"
@@ -26,6 +27,7 @@ class VaccineType(StrEnum):
     TRICAT = "TRICAT"
     TRICAT_BOOST = "TRICAT_BOOST"
     FELV = "FeLV"
+
 
 class Vaccination(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)

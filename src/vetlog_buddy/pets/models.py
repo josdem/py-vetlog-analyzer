@@ -16,11 +16,13 @@ from datetime import datetime
 from typing import Optional
 from sqlmodel import Field, SQLModel
 
+
 class Breed(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     slug: str
     type: str
     date_created: datetime = Field(default_factory=datetime.now)
+
 
 class Pet(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -30,8 +32,10 @@ class Pet(SQLModel, table=True):
     status: str
     uuid: str
     date_created: datetime = Field(default_factory=datetime.now)
-    user_id: Optional[int] = Field(default=None) # Assuming user_id exists based on typical schema, though not in query
+    user_id: Optional[int] = Field(
+        default=None
+    )  # Assuming user_id exists based on typical schema, though not in query
     image: Optional[str] = Field(default=None)
-    
+
     # Relationships (Optional for now, but good practice)
     # breed: Optional[Breed] = Relationship()
