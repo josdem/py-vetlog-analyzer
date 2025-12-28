@@ -59,7 +59,7 @@ uv run vaccines
 uv run pytest tests/unit -v
 
 # Test a specific file
-uv run pytest tests/test_filter_username.py
+uv run pytest tests/unit/test_user_service.py
 
 # Test a matching keyword
 uv run pytest -k vaccination
