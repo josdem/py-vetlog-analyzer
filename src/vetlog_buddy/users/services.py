@@ -51,6 +51,5 @@ class UserService:
     def get_uppercase_ratio(self, username: str) -> float:
         """Calculate uppercase ratio for a username"""
         upper_count = sum(1 for c in username if c.isupper())
-        print(f"Username: {username}, Uppercase count: {upper_count}")
         ratio = upper_count / len(username)
         return ratio
