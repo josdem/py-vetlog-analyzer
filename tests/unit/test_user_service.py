@@ -42,16 +42,16 @@ def test_is_suspicious(username, expected):
 @pytest.mark.parametrize(
     ("username", "expected"),
     [
-        ("josdem", True),
-        ("johndoe", True),
+        ("josdem", False),
+        ("johndoe", False),
         ("IRIS", True),
         ("Max", True),
         ("Jc", True),
-        ("NHUQfuLarRMDj", False),
-        ("rJVyFMNsmXhPUvG", False),
-        ("rVhBLNPSNIPE", False),
-        ("SxeQsgXI", False),
-        ("NDDmMAUftYXkxO", False),
+        ("NHUQfuLarRMDj", True),
+        ("rJVyFMNsmXhPUvG", True),
+        ("rVhBLNPSNIPE", True),
+        ("SxeQsgXI", True),
+        ("NDDmMAUftYXkxO", True),
         ("AbCd", True),  # 4 chars - too short
         ("AbCdE", False),  # 5 chars - valid minimum length
     ],
