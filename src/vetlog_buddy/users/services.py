@@ -19,7 +19,7 @@ class UserService:
         if len(username) < 5:
             # too short
             return True
-        if user.uppercase_ratio < self.factor:
+        if self.get_uppercase_ratio(username) >= self.factor:
             # too many uppercase
             return True
         return False
@@ -47,3 +47,9 @@ class UserService:
         print(f"Found {count} suspicious users")
         # return count
         return suspicious_users
+
+    def get_uppercase_ratio(self, username: str) -> float:
+        """Calculate uppercase ratio for a username"""
+        upper_count = sum(1 for c in username if c.isupper())
+        ratio = upper_count / len(username)
+        return ratio
