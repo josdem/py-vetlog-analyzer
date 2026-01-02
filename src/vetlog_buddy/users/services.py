@@ -13,14 +13,12 @@ class UserService:
         if not username:
             # empty string
             return True
-        if username.isupper():
-            # all uppercase
-            return True
         if len(username) < 5:
             # too short
             return True
-        if self.get_uppercase_ratio(username) >= self.factor:
-            # too many uppercase
+        ratio = self.get_uppercase_ratio(username)
+        if ratio >= self.factor and not username.isupper():
+            # too many uppercase , but allow all-uppercase
             return True
         return False
 

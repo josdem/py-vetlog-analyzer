@@ -52,6 +52,7 @@ def test_is_suspicious(username, expected):
         ("rVhBLNPSNIPE", True),
         ("SxeQsgXI", True),
         ("NDDmMAUftYXkxO", True),
+        ("BOUFFON", False),
         ("AbCd", True),  # 4 chars - too short
         ("Abcde", False),  # 5 chars - valid minimum length
     ],
