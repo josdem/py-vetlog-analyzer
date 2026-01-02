@@ -36,14 +36,17 @@ class UserService:
     def is_suspicious(self, user) -> bool:
         """Check if user is suspicious using logic from suspicious_username"""
         ratio = user.uppercase_ratio
-        return 0.2 < ratio <= 0.5
+        return 0.2 < ratio <= self.factor
 
     def list_suspicious(self) -> list:
         all_users = self.repo.get_all()
         suspicious_users = [u for u in all_users if self.is_suspicious(u)]
+        for user in suspicious_users:
+            print(
+                f"Suspicious user: {user.username} (min_ratio: {0.2}, max_ratio: {self.factor}, actual_ratio: {self.get_uppercase_ratio(user.username)})"
+            )
         count = len(suspicious_users)
         print(f"Found {count} suspicious users")
-        # return count
         return suspicious_users
 
     def get_uppercase_ratio(self, username: str) -> float:
