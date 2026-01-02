@@ -18,7 +18,7 @@ class UserService:
             return True
         ratio = self.get_uppercase_ratio(username)
         if ratio >= self.factor and not username.isupper():
-            # too many uppercase , but allow all-uppercase
+            # too many uppercase, but allow all-uppercase
             return True
         return False
 
